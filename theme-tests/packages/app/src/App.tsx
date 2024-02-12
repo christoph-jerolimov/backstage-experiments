@@ -36,14 +36,17 @@ import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/
 
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import LightIcon from '@material-ui/icons/WbSunny';
+import LightIcon from '@material-ui/icons/Brightness4';
+import DarkIcon from '@material-ui/icons/Brightness7';
+
 import {
   createTheme,
   genPageTheme,
   lightTheme,
-  shapes,
+  darkTheme,
 } from '@backstage/theme';
-const myTheme = createTheme({
+
+const myLightTheme = createTheme({
   palette: {
     ...lightTheme.palette,
     primary: {
@@ -84,31 +87,69 @@ const myTheme = createTheme({
       selectedColor: '#ffffff',
     },
   },
-  defaultPageTheme: 'home',
+  defaultPageTheme: 'all',
   // fontFamily: 'Comic Sans MS',
   /* below drives the header colors */
   pageTheme: {
-    home: genPageTheme({ colors: ['#8c4351', '#343b58'], shape: shapes.wave }),
-    documentation: genPageTheme({
-      colors: ['#8c4351', '#343b58'],
-      shape: shapes.wave2,
+    all: genPageTheme({
+      colors: ['#343b58'],
+      shape: 'url("")',
+      options: {
+        fontColor: 'white',
+      }
     }),
-    tool: genPageTheme({ colors: ['#8c4351', '#343b58'], shape: shapes.round }),
-    service: genPageTheme({
-      colors: ['#8c4351', '#343b58'],
-      shape: shapes.wave,
+  },
+});
+
+const myDarkTheme = createTheme({
+  palette: {
+    ...darkTheme.palette,
+    secondary: {
+      main: '#565a6e',
+    },
+    error: {
+      main: '#8c4351',
+    },
+    warning: {
+      main: '#8f5e15',
+    },
+    info: {
+      main: '#34548a',
+    },
+    success: {
+      main: '#485e30',
+    },
+    // background: {
+    //   default: '#d5d6db',
+    //   paper: '#d5d6db',
+    // },
+    banner: {
+      info: '#34548a',
+      error: '#8c4351',
+      text: '#343b58',
+      link: '#565a6e',
+    },
+    errorBackground: '#8c4351',
+    warningBackground: '#8f5e15',
+    infoBackground: '#343b58',
+    navigation: {
+      background: '#343b58',
+      indicator: '#8f5e15',
+      color: '#d5d6db',
+      selectedColor: '#ffffff',
+    },
+  },
+  defaultPageTheme: 'all',
+  // fontFamily: 'Comic Sans MS',
+  /* below drives the header colors */
+  pageTheme: {
+    all: genPageTheme({
+      colors: ['#343b58'],
+      shape: 'url("")',
+      options: {
+        fontColor: 'white',
+      }
     }),
-    website: genPageTheme({
-      colors: ['#8c4351', '#343b58'],
-      shape: shapes.wave,
-    }),
-    library: genPageTheme({
-      colors: ['#8c4351', '#343b58'],
-      shape: shapes.wave,
-    }),
-    other: genPageTheme({ colors: ['#8c4351', '#343b58'], shape: shapes.wave }),
-    app: genPageTheme({ colors: ['#8c4351', '#343b58'], shape: shapes.wave }),
-    apis: genPageTheme({ colors: ['#8c4351', '#343b58'], shape: shapes.wave }),
   },
 });
 
@@ -131,17 +172,30 @@ const app = createApp({
       catalogIndex: catalogPlugin.routes.catalogIndex,
     });
   },
-  themes: [{
-    id: 'my-theme',
-    title: 'My Custom Theme',
-    variant: 'light',
-    icon: <LightIcon />,
-    Provider: ({ children }) => (
-      <ThemeProvider theme={myTheme}>
-        <CssBaseline>{children}</CssBaseline>
-      </ThemeProvider>
-    ),
-  }]
+  themes: [
+    {
+      id: 'my-light-theme',
+      title: 'My Light Theme',
+      variant: 'light',
+      icon: <LightIcon />,
+      Provider: ({ children }) => (
+        <ThemeProvider theme={myLightTheme}>
+          <CssBaseline>{children}</CssBaseline>
+        </ThemeProvider>
+      ),
+    },
+    {
+      id: 'my-dark-theme',
+      title: 'My Dark Theme',
+      variant: 'dark',
+      icon: <DarkIcon />,
+      Provider: ({ children }) => (
+        <ThemeProvider theme={myDarkTheme}>
+          <CssBaseline>{children}</CssBaseline>
+        </ThemeProvider>
+      ),
+    }
+  ]
 });
 
 const routes = (
