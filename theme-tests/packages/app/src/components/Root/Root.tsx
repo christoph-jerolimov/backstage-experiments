@@ -84,6 +84,9 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
       >
         <SidebarSettings />
       </SidebarGroup>
+      <SidebarGroup label="Menu" icon={<MenuIcon />}>
+        <SidebarItem icon={HomeIcon} to="button-test" text="Button test" />
+      </SidebarGroup>
     </Sidebar>
     {children}
   </SidebarPage>

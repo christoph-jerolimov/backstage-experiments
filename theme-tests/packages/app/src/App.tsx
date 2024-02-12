@@ -39,6 +39,9 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import LightIcon from '@material-ui/icons/Brightness4';
 import DarkIcon from '@material-ui/icons/Brightness7';
 
+import ButtonV4 from '@material-ui/core/Button';
+import ButtonV5 from '@mui/material/Button';
+
 import {
   createTheme,
   genPageTheme,
@@ -198,6 +201,46 @@ const app = createApp({
   ]
 });
 
+const ButtonTest = () => {
+  return (
+    <div>
+      <h1>Material UI v4 buttons</h1>
+      <div>
+        <ButtonV4 variant="contained">Default</ButtonV4>
+        <ButtonV4 variant="contained" color="primary">
+          Primary
+        </ButtonV4>
+        <ButtonV4 variant="contained" color="secondary">
+          Secondary
+        </ButtonV4>
+        <ButtonV4 variant="contained" disabled>
+          Disabled
+        </ButtonV4>
+        <ButtonV4 variant="contained" color="primary" href="#contained-buttons">
+          Link
+        </ButtonV4>
+      </div>
+
+      <h1>MUI v5 buttons</h1>
+      <div>
+        <ButtonV5 variant="contained">Default</ButtonV5>
+        <ButtonV5 variant="contained" color="primary">
+          Primary
+        </ButtonV5>
+        <ButtonV5 variant="contained" color="secondary">
+          Secondary
+        </ButtonV5>
+        <ButtonV5 variant="contained" disabled>
+          Disabled
+        </ButtonV5>
+        <ButtonV5 variant="contained" color="primary" href="#contained-buttons">
+          Link
+        </ButtonV5>
+      </div>
+    </div>
+  );
+}
+
 const routes = (
   <FlatRoutes>
     <Route path="/" element={<Navigate to="catalog" />} />
@@ -235,6 +278,7 @@ const routes = (
       {searchPage}
     </Route>
     <Route path="/settings" element={<UserSettingsPage />} />
+    <Route path="/button-test" element={<ButtonTest />} />
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
   </FlatRoutes>
 );
