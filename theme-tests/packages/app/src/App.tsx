@@ -34,8 +34,9 @@ import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 
-import LightIcon from '@material-ui/icons/Brightness4';
-import DarkIcon from '@material-ui/icons/Brightness7';
+import LightIcon from '@material-ui/icons/WbSunnySharp';
+import DarkIcon from '@material-ui/icons/Brightness2';
+import { ThemeOptions } from '@mui/material';
 
 import ButtonV4 from '@material-ui/core/Button';
 import ButtonV5 from '@mui/material/Button';
@@ -43,19 +44,76 @@ import ButtonV5 from '@mui/material/Button';
 import {
   createUnifiedTheme,
   genPageTheme,
-  lightTheme,
-  darkTheme,
+  themes,
   UnifiedThemeProvider,
 } from '@backstage/theme';
 
+const components: ThemeOptions['components'] = {
+  MuiButton: {
+    defaultProps: {
+      disableRipple: true,
+    },
+    styleOverrides: {
+      root: {
+        textTransform: 'none',
+      },
+    },
+  },
+  MuiToggleButton: {
+    defaultProps: {
+      disableRipple: true,
+    },
+    styleOverrides: {
+      root: {
+        textTransform: 'none',
+      },
+    },
+  },
+  MuiCard: {
+    styleOverrides: {
+      root: {
+        // backgroundColor: 'red',
+      },
+    },
+  },
+  MuiCardHeader: {
+    styleOverrides: {
+      root: {
+        // backgroundColor: 'blue',
+      },
+    },
+  },
+  MuiTab: {
+    defaultProps: {
+      disableRipple: true,
+    },
+    styleOverrides: {
+      root: {
+        minWidth: 'initial !important',
+      },
+      // @ts-ignore: Tab contains a span 'wrapper'
+      wrapper: {
+        textTransform: 'none',
+      },
+    },
+  },
+  BackstageIconLinkVertical: {
+    styleOverrides: {
+      label: {
+        textTransform: 'none',
+      },
+    },
+  },
+}
+
 const myLightTheme = createUnifiedTheme({
   palette: {
-    ...lightTheme.palette,
+    ...themes.light.getTheme('v5')?.palette,
     primary: {
-      main: '#343b58',
+      main: 'rgb(0, 102, 204)',
     },
     secondary: {
-      main: '#565a6e',
+      main: 'rgb(0, 64, 128)',
     },
     error: {
       main: '#8c4351',
@@ -70,8 +128,8 @@ const myLightTheme = createUnifiedTheme({
       main: '#485e30',
     },
     background: {
-      default: '#d5d6db',
-      paper: '#d5d6db',
+      default: '#F0F0F0',
+      paper: '#FFFFFF',
     },
     banner: {
       info: '#34548a',
@@ -79,38 +137,39 @@ const myLightTheme = createUnifiedTheme({
       text: '#343b58',
       link: '#565a6e',
     },
-    errorBackground: '#8c4351',
-    warningBackground: '#8f5e15',
-    infoBackground: '#343b58',
+    errorBackground: '#FAEAE8',
+    warningBackground: '#FDF7E7',
+    infoBackground: '#E7F1FA',
     navigation: {
-      background: '#343b58',
-      indicator: '#8f5e15',
-      color: '#d5d6db',
-      selectedColor: '#ffffff',
+      background: 'rgb(33, 36, 39)',
+      indicator: 'rgb(115, 188, 247)',
+      color: '#ffffff',
+      selectedColor: 'rgb(78, 82, 85)',
     },
   },
   defaultPageTheme: 'all',
-  // fontFamily: 'Comic Sans MS',
+  fontFamily: 'RedHatDisplay, helvetica, arial, sans-serif',
   /* below drives the header colors */
   pageTheme: {
     all: genPageTheme({
-      colors: ['#343b58'],
+      colors: ['rgb(21, 21, 21)'],
       shape: 'url("")',
       options: {
-        fontColor: 'white',
-      }
+        fontColor: '#ffffff',
+      },
     }),
   },
+  components,
 });
 
 const myDarkTheme = createUnifiedTheme({
   palette: {
-    ...darkTheme.palette,
-    secondary: {
-      main: '#565a6e',
+    ...themes.dark.getTheme('v5')?.palette,
+    primary: {
+      main: 'rgb(0, 102, 204)',
     },
-    error: {
-      main: '#8c4351',
+    secondary: {
+      main: 'rgb(0, 64, 128)',
     },
     warning: {
       main: '#8f5e15',
@@ -121,38 +180,39 @@ const myDarkTheme = createUnifiedTheme({
     success: {
       main: '#485e30',
     },
-    // background: {
-    //   default: '#d5d6db',
-    //   paper: '#d5d6db',
-    // },
+    background: {
+      default: 'rgb(15, 18, 20)',
+      paper: 'rgb(27, 29, 33)',
+    },
     banner: {
       info: '#34548a',
       error: '#8c4351',
       text: '#343b58',
       link: '#565a6e',
     },
-    errorBackground: '#8c4351',
-    warningBackground: '#8f5e15',
-    infoBackground: '#343b58',
+    errorBackground: '#FAEAE8',
+    warningBackground: '#FDF7E7',
+    infoBackground: '#E7F1FA',
     navigation: {
-      background: '#343b58',
-      indicator: '#8f5e15',
-      color: '#d5d6db',
-      selectedColor: '#ffffff',
+      background: 'rgb(33, 36, 39)',
+      indicator: 'rgb(115, 188, 247)',
+      color: '#ffffff',
+      selectedColor: 'rgb(78, 82, 85)',
     },
   },
   defaultPageTheme: 'all',
-  // fontFamily: 'Comic Sans MS',
+  fontFamily: 'RedHatDisplay, helvetica, arial, sans-serif',
   /* below drives the header colors */
   pageTheme: {
     all: genPageTheme({
-      colors: ['#343b58'],
+      colors: ['rgb(3, 3, 3)'],
       shape: 'url("")',
       options: {
-        fontColor: 'white',
+        fontColor: '#ffffff',
       }
     }),
   },
+  components,
 });
 
 const app = createApp({
