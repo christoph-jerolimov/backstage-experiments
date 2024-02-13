@@ -34,8 +34,6 @@ import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 
-import { ThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import LightIcon from '@material-ui/icons/Brightness4';
 import DarkIcon from '@material-ui/icons/Brightness7';
 
@@ -43,13 +41,14 @@ import ButtonV4 from '@material-ui/core/Button';
 import ButtonV5 from '@mui/material/Button';
 
 import {
-  createTheme,
+  createUnifiedTheme,
   genPageTheme,
   lightTheme,
   darkTheme,
+  UnifiedThemeProvider,
 } from '@backstage/theme';
 
-const myLightTheme = createTheme({
+const myLightTheme = createUnifiedTheme({
   palette: {
     ...lightTheme.palette,
     primary: {
@@ -104,7 +103,7 @@ const myLightTheme = createTheme({
   },
 });
 
-const myDarkTheme = createTheme({
+const myDarkTheme = createUnifiedTheme({
   palette: {
     ...darkTheme.palette,
     secondary: {
@@ -182,9 +181,9 @@ const app = createApp({
       variant: 'light',
       icon: <LightIcon />,
       Provider: ({ children }) => (
-        <ThemeProvider theme={myLightTheme}>
-          <CssBaseline>{children}</CssBaseline>
-        </ThemeProvider>
+        <UnifiedThemeProvider theme={myLightTheme}>
+          {children}
+        </UnifiedThemeProvider>
       ),
     },
     {
@@ -193,9 +192,9 @@ const app = createApp({
       variant: 'dark',
       icon: <DarkIcon />,
       Provider: ({ children }) => (
-        <ThemeProvider theme={myDarkTheme}>
-          <CssBaseline>{children}</CssBaseline>
-        </ThemeProvider>
+        <UnifiedThemeProvider theme={myDarkTheme}>
+          {children}
+        </UnifiedThemeProvider>
       ),
     }
   ]
