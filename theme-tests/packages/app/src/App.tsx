@@ -34,16 +34,23 @@ import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 
+import { ThemeProvider } from '@material-ui/core';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import LightIcon from '@material-ui/icons/WbSunnySharp';
 import DarkIcon from '@material-ui/icons/Brightness2';
-import { ThemeOptions } from '@mui/material';
 
 import ButtonV4 from '@material-ui/core/Button';
 import ButtonV5 from '@mui/material/Button';
+import AutocompleteV4 from '@material-ui/lab/Autocomplete';
+import AutocompleteV5 from '@mui/material/Autocomplete';
+import TextFieldV4 from '@material-ui/core/TextField';
+import TextFieldV5 from '@mui/material/TextField';
 
 import {
   createUnifiedTheme,
   genPageTheme,
+  lightTheme,
+  darkTheme,
   themes,
   UnifiedThemeProvider,
 } from '@backstage/theme';
@@ -236,6 +243,28 @@ const app = createApp({
   },
   themes: [
     {
+      id: 'backstage-light-theme',
+      title: 'Backstage Light Theme',
+      variant: 'light',
+      icon: <LightIcon />,
+      Provider: ({ children }) => (
+        <ThemeProvider theme={lightTheme}>
+          <CssBaseline>{children}</CssBaseline>
+        </ThemeProvider>
+      ),
+    },
+    {
+      id: 'backstage-dark-theme',
+      title: 'Backstage Dark Theme',
+      variant: 'dark',
+      icon: <DarkIcon />,
+      Provider: ({ children }) => (
+        <ThemeProvider theme={darkTheme}>
+          <CssBaseline>{children}</CssBaseline>
+        </ThemeProvider>
+      ),
+    },
+    {
       id: 'my-light-theme',
       title: 'My Light Theme',
       variant: 'light',
@@ -256,11 +285,24 @@ const app = createApp({
           {children}
         </UnifiedThemeProvider>
       ),
-    }
+    },
   ]
 });
 
 const ButtonTest = () => {
+  const movies = [
+    { title: 'The Shawshank Redemption', year: 1994 },
+    { title: 'The Godfather', year: 1972 },
+    { title: 'The Godfather: Part II', year: 1974 },
+    { title: 'The Dark Knight', year: 2008 },
+    { title: '12 Angry Men', year: 1957 },
+    { title: "Schindler's List", year: 1993 },
+    { title: 'Pulp Fiction', year: 1994 },
+    { title: 'The Lord of the Rings: The Return of the King', year: 2003 },
+    { title: 'The Good, the Bad and the Ugly', year: 1966 },
+    { title: 'Fight Club', year: 1999 },
+  ];
+
   return (
     <div>
       <h1>Material UI v4 buttons</h1>
@@ -295,6 +337,24 @@ const ButtonTest = () => {
         <ButtonV5 variant="contained" color="primary" href="#contained-buttons">
           Link
         </ButtonV5>
+      </div>
+
+      <h1>Material UI v4 Autocomplete</h1>
+      <div>
+        <AutocompleteV4
+          options={movies}
+          renderInput={(params) => <TextFieldV4 {...params} label="Movie" />}
+          getOptionLabel={(option) => option.title}
+        />
+      </div>
+
+      <h1>MUI v5 Autocomplete</h1>
+      <div>
+        <AutocompleteV5
+          options={movies}
+          renderInput={(params) => <TextFieldV5 {...params} label="Movie" />}
+          getOptionLabel={(option) => option.title}
+        />
       </div>
     </div>
   );
