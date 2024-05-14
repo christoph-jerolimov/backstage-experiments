@@ -37,6 +37,8 @@ import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 
+import { getThemes } from '@redhat-developer/red-hat-developer-hub-theme';
+
 const app = createApp({
   apis,
   bindRoutes({ bind }) {
@@ -59,6 +61,7 @@ const app = createApp({
   components: {
     SignInPage: props => <SignInPage {...props} auto providers={['guest']} />,
   },
+  themes: getThemes(),
 });
 
 const routes = (
