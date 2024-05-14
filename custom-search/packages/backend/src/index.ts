@@ -38,4 +38,6 @@ backend.add(import('@backstage/plugin-search-backend/alpha'));
 backend.add(import('@backstage/plugin-search-backend-module-catalog/alpha'));
 backend.add(import('@backstage/plugin-search-backend-module-techdocs/alpha'));
 
+backend.add(import('../../../plugins/search-backend-module-experiments'));
+
 backend.start();
