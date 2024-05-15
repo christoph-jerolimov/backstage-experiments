@@ -3,33 +3,29 @@ import { Readable } from 'stream';
 import { readdir, stat } from 'fs/promises';
 import { LoggerService } from '@backstage/backend-plugin-api';
 
-export type CollatorFactoryOptions = {
+export type FilesCollatorFactoryOptions = {
   logger: LoggerService;
 };
 
 /**
- * Search collator responsible for collecting stack overflow questions to index.
- *
  * @public
  */
-export class CollatorFactory implements DocumentCollatorFactory {
+export class FilesCollatorFactory implements DocumentCollatorFactory {
   private readonly logger: LoggerService;
 
-  public readonly type: string = 'stack-overflow';
+  public readonly type: string = 'search-backend-module-files';
 
-  private constructor(options: CollatorFactoryOptions) {
+  private constructor(options: FilesCollatorFactoryOptions) {
     this.logger = options.logger.child({ documentType: this.type });
   }
 
-  static fromConfig(options: CollatorFactoryOptions) {
-    return new CollatorFactory(options);
+  static fromConfig(options: FilesCollatorFactoryOptions) {
+    return new FilesCollatorFactory(options);
   }
 
   async getCollator() {
-    this.logger.info('Run collactor...');
-    const x = Readable.from(this.execute());
-    this.logger.info('x');
-    return x;
+    this.logger.info('Create search-backend-module-files collactor...');
+    return Readable.from(this.execute());
   }
 
   async *execute(): AsyncGenerator<SearchDocument> {

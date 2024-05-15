@@ -1,5 +1,5 @@
 {
-  "name": "@internal/backstage-plugin-search-backend-module-experiments",
+  "name": "@internal/backstage-plugin-search-backend-module-files",
   "description": "An experimental backend module for the search plugin.",
   "version": "0.1.0",
   "main": "src/index.ts",

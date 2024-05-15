@@ -4,7 +4,7 @@ import { CollatorFactory } from './collator';
 
 export const searchBackendModule = createBackendModule({
   pluginId: 'search',
-  moduleId: 'search-backend-module-experiments',
+  moduleId: 'search-backend-module-files',
   register(reg) {
     reg.registerInit({
       deps: {
@@ -13,7 +13,7 @@ export const searchBackendModule = createBackendModule({
         indexRegistry: searchIndexRegistryExtensionPoint,
       },
       async init({ logger, scheduler, indexRegistry }) {
-        logger.info('Hello module World!');
+        logger.info('Init search-backend-module-files...');
 
         const schedule = {
           frequency: { seconds: 10 },
@@ -27,10 +27,7 @@ export const searchBackendModule = createBackendModule({
             logger,
           }),
         });
-
       },
     });
-
-    // reg.registerExtensionPoint();
   },
 });

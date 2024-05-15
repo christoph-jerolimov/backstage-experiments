@@ -1,4 +1,4 @@
-# @internal/backstage-plugin-search-backend-module-experiments
+# @internal/backstage-plugin-search-backend-module-files
 
 An experimental backend module for the search plugin.
 
