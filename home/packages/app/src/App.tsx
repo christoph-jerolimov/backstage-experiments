@@ -37,7 +37,7 @@ import { AppRouter, FlatRoutes } from '@backstage/core-app-api';
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
-import { HomepageCompositionRoot } from '@backstage/plugin-home';
+import { HomepageCompositionRoot, VisitListener } from '@backstage/plugin-home';
 
 const app = createApp({
   apis,
@@ -65,7 +65,8 @@ const app = createApp({
 
 const routes = (
   <FlatRoutes>
-    <Route path="/" element={<HomepageCompositionRoot />}>
+    <Route path="/" element={<Navigate to="home" />} />
+    <Route path="/home" element={<HomepageCompositionRoot />}>
       {homePage}
     </Route>;
     <Route path="/catalog" element={<CatalogIndexPage />} />
@@ -107,6 +108,7 @@ export default app.createRoot(
     <AlertDisplay />
     <OAuthRequestDialog />
     <AppRouter>
+      <VisitListener />
       <Root>{routes}</Root>
     </AppRouter>
   </>,

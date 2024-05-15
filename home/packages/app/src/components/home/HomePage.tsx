@@ -10,8 +10,41 @@ import {
   HomePageRecentlyVisited,
 } from '@backstage/plugin-home';
 
+const defaultConfig = [
+  {
+    component: 'HomePageStarredEntities',
+    x: 0,
+    y: 0,
+    width: 6,
+    height: 6,
+    movable: true,
+    resizable: true,
+    deletable: true,
+  },
+  {
+    component: 'HomePageRecentlyVisited',
+    x: 6,
+    y: 0,
+    width: 6,
+    height: 6,
+    movable: true,
+    resizable: true,
+    deletable: true,
+  },
+  {
+    component: 'HomePageTopVisited',
+    x: 0,
+    y: 6,
+    width: 6,
+    height: 6,
+    movable: true,
+    resizable: true,
+    deletable: true,
+  },
+];
+
 export const homePage = (
-  <CustomHomepageGrid>
+  <CustomHomepageGrid config={defaultConfig}>
     <WelcomeTitle />
     <HomePageCompanyLogo />
     <HomePageRandomJoke />
