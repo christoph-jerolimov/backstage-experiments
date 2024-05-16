@@ -13,8 +13,34 @@ kind: Component
 metadata:
   name: odc
   annotations:
+    # roadie jira plugin
     jira/project-key: ODC
     #jira/component: <example-component> # optional, you might skip this value to fetch data for all components
+
+    # AxisCommunications jira-dashboard
+    jira.com/project-key: ODC
+    #jira.com/components: component,component,component # Jira component name separated with a comma. The Roadie Backstage Jira Plugin Jira annotation `/component` is also supported here by default
+    #jira.com/filter-ids: 12345,67890 # Jira filter id separated with a comma
+spec:
+  type: service
+  lifecycle: production
+  owner: guests
+  system: openshift
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: odc-bugs
+  annotations:
+    # roadie jira plugin
+    jira/project-key: OCPBUGS
+    jira/component: Dev Console
+
+    # AxisCommunications jira-dashboard
+    jira.com/project-key: OCPBUGS
+    jira.com/components: Dev Console
+    #jira.com/filter-ids: 12345,67890 # Jira filter id separated with a comma
 spec:
   type: service
   lifecycle: production

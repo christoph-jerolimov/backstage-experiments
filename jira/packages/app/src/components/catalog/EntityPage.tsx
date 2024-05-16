@@ -56,6 +56,8 @@ import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 
 import { EntityJiraOverviewCard, isJiraAvailable } from '@roadiehq/backstage-plugin-jira';
 
+import { EntityJiraDashboardContent, isJiraDashboardAvailable } from '@axis-backstage/plugin-jira-dashboard';
+
 const techdocsContent = (
   <EntityTechdocsContent>
     <TechDocsAddons>
@@ -165,6 +167,14 @@ const serviceEntityPage = (
       <EntityJiraOverviewCard />
     </EntityLayout.Route>
 
+    <EntityLayout.Route
+      if={entity => isJiraDashboardAvailable(entity, 'jira')}
+      path="/jira-dashboard"
+      title="Jira Dashboard"
+    >
+      <EntityJiraDashboardContent />
+    </EntityLayout.Route>
+
     <EntityLayout.Route path="/api" title="API">
       <Grid container spacing={3} alignItems="stretch">
         <Grid item md={6}>
@@ -205,6 +215,14 @@ const websiteEntityPage = (
 
     <EntityLayout.Route if={isJiraAvailable} path="/issues" title="Issues">
       <EntityJiraOverviewCard />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route
+      if={entity => isJiraDashboardAvailable(entity, 'jira')}
+      path="/jira-dashboard"
+      title="Jira Dashboard"
+    >
+      <EntityJiraDashboardContent />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/dependencies" title="Dependencies">
