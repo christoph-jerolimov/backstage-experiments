@@ -3,7 +3,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
-  name: examples
+  name: openshift
 spec:
   owner: guests
 ---
@@ -11,31 +11,12 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: example-website
+  name: odc
+  annotations:
+    jira/project-key: ODC
+    #jira/component: <example-component> # optional, you might skip this value to fetch data for all components
 spec:
-  type: website
-  lifecycle: experimental
+  type: service
+  lifecycle: production
   owner: guests
-  system: examples
-  providesApis: [example-grpc-api]
----
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-api
-apiVersion: backstage.io/v1alpha1
-kind: API
-metadata:
-  name: example-grpc-api
-spec:
-  type: grpc
-  lifecycle: experimental
-  owner: guests
-  system: examples
-  definition: |
-    syntax = "proto3";
-
-    service Exampler {
-      rpc Example (ExampleMessage) returns (ExampleMessage) {};
-    }
-
-    message ExampleMessage {
-      string example = 1;
-    };
+  system: openshift
