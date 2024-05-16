@@ -54,6 +54,8 @@ import {
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 
+import { ReadmeCard } from '@axis-backstage/plugin-readme';
+
 const techdocsContent = (
   <EntityTechdocsContent>
     <TechDocsAddons>
@@ -128,6 +130,9 @@ const overviewContent = (
       <EntityAboutCard variant="gridItem" />
     </Grid>
     <Grid item md={6} xs={12}>
+      <ReadmeCard />
+    </Grid>
+    <Grid item md={6} xs={12}>
       <EntityCatalogGraphCard variant="gridItem" height={400} />
     </Grid>
 
@@ -172,6 +177,10 @@ const serviceEntityPage = (
       </Grid>
     </EntityLayout.Route>
 
+    <EntityLayout.Route path="/readme" title="README">
+      <ReadmeCard variant="fullHeight" />
+    </EntityLayout.Route>
+
     <EntityLayout.Route path="/docs" title="Docs">
       {techdocsContent}
     </EntityLayout.Route>
@@ -199,6 +208,10 @@ const websiteEntityPage = (
       </Grid>
     </EntityLayout.Route>
 
+    <EntityLayout.Route path="/readme" title="README">
+      <ReadmeCard variant="fullHeight" />
+    </EntityLayout.Route>
+
     <EntityLayout.Route path="/docs" title="Docs">
       {techdocsContent}
     </EntityLayout.Route>
@@ -216,6 +229,10 @@ const defaultEntityPage = (
   <EntityLayout>
     <EntityLayout.Route path="/" title="Overview">
       {overviewContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/readme" title="README">
+      <ReadmeCard variant="fullHeight" />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/docs" title="Docs">
