@@ -16,6 +16,7 @@
     "build-image": "docker build ../.. -f Dockerfile --tag backstage"
   },
   "dependencies": {
+    "@axis-backstage/plugin-jira-dashboard-backend": "^2.1.0",
     "@backstage-community/plugin-playlist-backend": "^0.3.23",
     "@backstage-community/plugin-sonarqube-backend": "^0.2.20",
     "@backstage/backend-common": "^0.22.0",

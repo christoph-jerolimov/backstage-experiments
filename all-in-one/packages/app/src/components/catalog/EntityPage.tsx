@@ -68,6 +68,10 @@ import {
   isTravisciAvailable,
 } from '@roadiehq/backstage-plugin-travis-ci';
 
+import { EntityJiraOverviewCard, isJiraAvailable } from '@roadiehq/backstage-plugin-jira';
+
+import { EntityJiraDashboardContent, isJiraDashboardAvailable } from '@axis-backstage/plugin-jira-dashboard';
+
 const hasLinks = (entity: Entity): boolean => !!entity.metadata.links?.length;
 
 const techdocsContent = (
@@ -156,6 +160,13 @@ const overviewContent = (
     <Grid item md={6}>
       <EntityAboutCard variant="gridItem" />
     </Grid>
+    <EntitySwitch>
+      <EntitySwitch.Case if={isJiraAvailable}>
+        <Grid item md={6}>
+          <EntityJiraOverviewCard />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
     {cicdCard}
     <EntitySwitch>
       <EntitySwitch.Case if={isSonarQubeAvailable}>
@@ -185,6 +196,14 @@ const serviceEntityPage = (
   <EntityLayout>
     <EntityLayout.Route path="/" title="Overview">
       {overviewContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route if={isJiraAvailable} path="/issues" title="Issues">
+      <EntityJiraOverviewCard />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route if={isJiraDashboardAvailable} path="/jira-dashboard" title="Jira Dashboard">
+      <EntityJiraDashboardContent />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
@@ -235,6 +254,14 @@ const websiteEntityPage = (
   <EntityLayout>
     <EntityLayout.Route path="/" title="Overview">
       {overviewContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route if={isJiraAvailable} path="/issues" title="Issues">
+      <EntityJiraOverviewCard />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route if={isJiraDashboardAvailable} path="/jira-dashboard" title="Jira Dashboard">
+      <EntityJiraDashboardContent />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/ci-cd" title="CI/CD">

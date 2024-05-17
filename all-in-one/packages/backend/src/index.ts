@@ -46,4 +46,6 @@ backend.add(import('@backstage-community/plugin-playlist-backend'));
 
 backend.add(import('@backstage-community/plugin-sonarqube-backend'));
 
+backend.add(import('@axis-backstage/plugin-jira-dashboard-backend'));
+
 backend.start();

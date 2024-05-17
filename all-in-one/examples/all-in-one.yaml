@@ -8,6 +8,10 @@ metadata:
     quay.io/repository-slug: jerolimov/nodeinfo
     travis-ci.com/repo-slug: openshift/ruby-hello-world
     sonarqube.org/project-key: janus-idp_backstage-showcase
+    # roadie jira plugin
+    jira/project-key: ODC
+    # AxisCommunications jira-dashboard
+    jira.com/project-key: ODC
 spec:
   type: service
   lifecycle: experimental
