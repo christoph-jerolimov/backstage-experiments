@@ -2333,6 +2333,22 @@
     rc-progress "3.5.1"
     react-use "^17.2.4"
 
+"@backstage-community/plugin-tech-radar@^0.7.4":
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/@backstage-community/plugin-tech-radar/-/plugin-tech-radar-0.7.4.tgz#2bf4c7f0749f422f066053d671ae5478771a1277"
+  integrity sha512-HPsR13J6bkBzhritV4C0lImoR61xa1SozSQ6yEtmbqmYinDgZ3JxRV3rzecSqD/Znc8tnoSqgvzsSViOBrua0Q==
+  dependencies:
+    "@backstage/core-compat-api" "^0.2.4"
+    "@backstage/core-components" "^0.14.4"
+    "@backstage/core-plugin-api" "^1.9.2"
+    "@backstage/frontend-plugin-api" "^0.6.4"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@types/react" "^16.13.1 || ^17.0.0 || ^18.0.0"
+    color "^4.0.1"
+    d3-force "^3.0.0"
+    react-use "^17.2.4"
+
 "@backstage-community/plugin-todo-backend@^0.3.17":
   version "0.3.17"
   resolved "https://registry.yarnpkg.com/@backstage-community/plugin-todo-backend/-/plugin-todo-backend-0.3.17.tgz#ce9d29b9123dbd5849dd43618b7b1f9961e6fc03"
@@ -2860,7 +2876,7 @@
     zen-observable "^0.10.0"
     zod "^3.22.4"
 
-"@backstage/core-compat-api@^0.2.5":
+"@backstage/core-compat-api@^0.2.4", "@backstage/core-compat-api@^0.2.5":
   version "0.2.5"
   resolved "https://registry.yarnpkg.com/@backstage/core-compat-api/-/core-compat-api-0.2.5.tgz#bc75a51935f1c6f21393bdc9a54251c0701ed5e3"
   integrity sha512-TapsSsk+7vZ95p3XVGVftwGC1m/WttFzSlVaSu1DoFc3E+cRTHoU587QHQrcR1BlgJOsk6qeFoN+ovLYSPbH8g==
@@ -2949,7 +2965,7 @@
     "@manypkg/get-packages" "^1.1.3"
     minimatch "^9.0.0"
 
-"@backstage/frontend-plugin-api@^0.6.5":
+"@backstage/frontend-plugin-api@^0.6.4", "@backstage/frontend-plugin-api@^0.6.5":
   version "0.6.5"
   resolved "https://registry.yarnpkg.com/@backstage/frontend-plugin-api/-/frontend-plugin-api-0.6.5.tgz#7be360541cb7e63f85df5a915a9672d56ed08157"
   integrity sha512-AVrwF8HNPaB+qHW3SwFU3aPqqN7EVcq8zWEgghkjdmxiSmqbvBNT8ixg9mSxtR1/LiZzlE0oc31G5Z6DQmilFA==
@@ -10806,6 +10822,8 @@ apg-lite@^1.0.3:
     "@janus-idp/backstage-plugin-quay" "^1.7.1"
     "@material-ui/core" "^4.12.2"
     "@material-ui/icons" "^4.9.1"
+    "@mui/icons-material" "^5.15.18"
+    "@redhat-developer/red-hat-developer-hub-theme" "^0.0.40"
     "@roadiehq/backstage-plugin-jira" "^2.5.8"
     "@roadiehq/backstage-plugin-travis-ci" "^2.1.23"
     history "^5.0.0"
@@ -12153,7 +12171,7 @@ color-name@^1.0.0, color-name@~1.1.4:
   resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.4.tgz#c2a09a87acbde69543de6f63fa3995c826c536a2"
   integrity sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==
 
-color-string@^1.6.0:
+color-string@^1.6.0, color-string@^1.9.0:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/color-string/-/color-string-1.9.1.tgz#4467f9146f036f855b764dfb5bf8582bf342c7a4"
   integrity sha512-shrVawQFojnZv6xM40anx4CkoDP+fZsw/ZerEMsW/pyzsRbElpsL/DBVW7q3ExxwusdNXI3lXpuhEZkzs8p5Eg==
@@ -12173,6 +12191,14 @@ color@^3.1.3:
   dependencies:
     color-convert "^1.9.3"
     color-string "^1.6.0"
+
+color@^4.0.1:
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/color/-/color-4.2.3.tgz#d781ecb5e57224ee43ea9627560107c0e0c6463a"
+  integrity sha512-1rXeuUUiGGrykh+CeBdu5Ie7OJwinCgQY0bc7GCRxy5xVHy+moaqkpL/jqQq0MtQOeYcrqEz4abc5f0KtU7W4A==
+  dependencies:
+    color-convert "^2.0.1"
+    color-string "^1.9.0"
 
 colord@^2.9.1:
   version "2.9.3"
@@ -12970,6 +12996,15 @@ ctrlc-windows@^2.1.0:
   resolved "https://registry.yarnpkg.com/d3-ease/-/d3-ease-3.0.1.tgz#9658ac38a2140d59d346160f1f6c30fda0bd12f4"
   integrity sha512-wR/XK3D3XcLIZwpbvQwQ5fK+8Ykds1ip7A2Txe0yxncXSdq1L9skcG7blcedkOX+ZcgxGAmLX1FrRGbADwzi0w==
 
+d3-force@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/d3-force/-/d3-force-3.0.0.tgz#3e2ba1a61e70888fe3d9194e30d6d14eece155c4"
+  integrity sha512-zxV/SsA+U4yte8051P4ECydjD/S+qeYtnaIyAs9tgHCqfguma/aAQDjo85A9Z6EKhBirHRJHXIgJUlffT4wdLg==
+  dependencies:
+    d3-dispatch "1 - 3"
+    d3-quadtree "1 - 3"
+    d3-timer "1 - 3"
+
 "d3-interpolate@1 - 3":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/d3-interpolate/-/d3-interpolate-3.0.1.tgz#3c47aa5b32c5b3dfb56ef3fd4342078a632b400d"
@@ -12981,6 +13016,11 @@ d3-path@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/d3-path/-/d3-path-3.1.0.tgz#22df939032fb5a71ae8b1800d61ddb7851c42526"
   integrity sha512-p3KP5HCf/bvjBSSKuXid6Zqijx7wIfNW+J/maPs+iwR35at5JCbLUT0LzF1cnjbCHWhqzQTIN2Jpe8pRebIEFQ==
+
+"d3-quadtree@1 - 3":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/d3-quadtree/-/d3-quadtree-3.0.1.tgz#6dca3e8be2b393c9a9d514dabbd80a92deef1a4f"
+  integrity sha512-04xDrxQTDTCFwP5H6hRhsRcb9xxv2RzkcsygFzmkSIOJy3PeRJP7sNk3VRIbKXcog561P9oU0/rVH6vDROAgUw==
 
 "d3-selection@2 - 3", d3-selection@3, d3-selection@^3.0.0:
   version "3.0.0"

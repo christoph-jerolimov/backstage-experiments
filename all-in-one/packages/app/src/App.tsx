@@ -40,6 +40,7 @@ import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/
 import { HomepageCompositionRoot, VisitListener } from '@backstage/plugin-home';
 import { DevToolsPage } from '@backstage/plugin-devtools';
 import { PlaylistIndexPage, PlaylistPage } from '@backstage-community/plugin-playlist';
+import { TechRadarPage } from '@backstage-community/plugin-tech-radar';
 
 import { getThemes } from '@redhat-developer/red-hat-developer-hub-theme';
 
@@ -108,6 +109,10 @@ const routes = (
     <Route path="/devtools" element={<DevToolsPage />} />
     <Route path="/playlist" element={<PlaylistIndexPage />} />
     <Route path="/playlist/:playlistId" element={<PlaylistPage />} />
+    <Route
+      path="/tech-radar"
+      element={<TechRadarPage width={1500} height={800} />}
+    />
   </FlatRoutes>
 );
 
