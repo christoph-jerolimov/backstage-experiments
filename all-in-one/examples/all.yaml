@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: examples-all
+spec:
+  targets:
+    - ./system.yaml
+    - ./example-website.yaml
+    - ./example-grpc-api.yaml
+    - ./org.yaml
+    - ./template/template.yaml
+    - ./kubernetes.yaml

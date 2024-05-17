@@ -1,0 +1,12 @@
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: kubernetes-service
+  annotations:
+    backstage.io/kubernetes-id: value
+spec:
+  type: service
+  lifecycle: experimental
+  owner: guests
+  system: examples
