@@ -9,4 +9,5 @@ spec:
     - ./example-grpc-api.yaml
     - ./org.yaml
     - ./template/template.yaml
+    - ./techdocs.yaml
     - ./kubernetes.yaml

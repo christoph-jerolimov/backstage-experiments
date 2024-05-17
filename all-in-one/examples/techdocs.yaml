@@ -1,0 +1,12 @@
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: techdocs-example
+  annotations:
+    backstage.io/techdocs-ref: url:https://github.com/jerolimov/janus/tree/main/techdocs/christoph-demo
+spec:
+  type: service
+  lifecycle: experimental
+  owner: guests
+  system: examples

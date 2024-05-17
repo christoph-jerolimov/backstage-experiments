@@ -51,6 +51,7 @@ import {
   RELATION_PROVIDES_API,
 } from '@backstage/catalog-model';
 
+import { isTechDocsAvailable } from '@backstage/plugin-techdocs';
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 
@@ -174,7 +175,7 @@ const serviceEntityPage = (
       </Grid>
     </EntityLayout.Route>
 
-    <EntityLayout.Route path="/docs" title="Docs">
+    <EntityLayout.Route if={isTechDocsAvailable} path="/docs" title="Docs">
       {techdocsContent}
     </EntityLayout.Route>
 
@@ -205,7 +206,7 @@ const websiteEntityPage = (
       </Grid>
     </EntityLayout.Route>
 
-    <EntityLayout.Route path="/docs" title="Docs">
+    <EntityLayout.Route if={isTechDocsAvailable} path="/docs" title="Docs">
       {techdocsContent}
     </EntityLayout.Route>
 
@@ -228,7 +229,7 @@ const defaultEntityPage = (
       {overviewContent}
     </EntityLayout.Route>
 
-    <EntityLayout.Route path="/docs" title="Docs">
+    <EntityLayout.Route if={isTechDocsAvailable} path="/docs" title="Docs">
       {techdocsContent}
     </EntityLayout.Route>
   </EntityLayout>
