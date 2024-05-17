@@ -22,4 +22,5 @@ spec:
     - ./readme.yaml
     - ./todo.yaml
     - ./travis.yaml
+    - ./nexus.yaml
     - ./all-in-one.yaml

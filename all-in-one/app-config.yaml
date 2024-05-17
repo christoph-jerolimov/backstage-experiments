@@ -66,6 +66,15 @@ proxy:
       Content-Type: 'application/json'
       X-Atlassian-Token: 'nocheck'
       User-Agent: "MY-UA-STRING"
+  '/nexus-repository-manager':
+    target: 'https://nexus.corp.redhat.com/'
+    headers:
+      X-Requested-With: 'XMLHttpRequest'
+      # Uncomment the following line to access a private Nexus Repository Manager using a token
+      # Authorization: 'Bearer <YOUR TOKEN>'
+    changeOrigin: true
+    # Change to "false" in case of using self hosted Nexus Repository Manager instance with a self-signed certificate
+    secure: false
   '/quay/api':
     target: 'https://quay.io'
     headers:
@@ -135,6 +144,9 @@ catalog:
     #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
     #   rules:
     #     - allow: [User, Group]
+
+nexusRepositoryManager:
+  experimentalAnnotations: true
 
 sonarqube:
   baseUrl: https://sonarcloud.io

@@ -1,0 +1,31 @@
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: nexus-maven-example
+  annotations:
+    nexus-repository-manager/format: maven2
+    nexus-repository-manager/repository: maven-central
+    nexus-repository-manager/maven.group-id: org.apache.logging.log4j
+    nexus-repository-manager/maven.artifact-id: log4j-api
+spec:
+  type: service
+  lifecycle: experimental
+  owner: guests
+  system: examples
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: nexus-npm-example
+  annotations:
+    nexus-repository-manager/format: npm
+    nexus-repository-manager/repository: npmjs
+    nexus-repository-manager/group: ""
+    nexus-repository-manager/name: react
+spec:
+  type: service
+  lifecycle: experimental
+  owner: guests
+  system: examples
