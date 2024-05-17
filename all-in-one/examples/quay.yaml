@@ -2,7 +2,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: quay-nodeinfo-example
+  name: quay-example
   annotations:
     quay.io/repository-slug: jerolimov/nodeinfo
 spec:

@@ -2,9 +2,9 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: kubernetes-example
+  name: travis-example
   annotations:
-    backstage.io/kubernetes-id: value
+    travis-ci.com/repo-slug: openshift/ruby-hello-world
 spec:
   type: service
   lifecycle: experimental

@@ -62,6 +62,12 @@ import { isQuayAvailable, QuayPage } from '@janus-idp/backstage-plugin-quay';
 import { EntitySonarQubeCard, EntitySonarQubeContentPage } from '@backstage-community/plugin-sonarqube';
 import { isSonarQubeAvailable } from '@backstage-community/plugin-sonarqube-react';
 
+import {
+  EntityTravisCIContent,
+  EntityTravisCIOverviewCard,
+  isTravisciAvailable,
+} from '@roadiehq/backstage-plugin-travis-ci';
+
 const hasLinks = (entity: Entity): boolean => !!entity.metadata.links?.length;
 
 const techdocsContent = (
@@ -83,6 +89,9 @@ const cicdContent = (
         <EntityGithubActionsContent />
       </EntitySwitch.Case>
      */}
+    <EntitySwitch.Case if={isTravisciAvailable}>
+      <EntityTravisCIContent />
+    </EntitySwitch.Case>
 
     <EntitySwitch.Case>
       <EmptyState
@@ -131,12 +140,23 @@ const entityWarningContent = (
   </>
 );
 
+export const cicdCard = (
+  <EntitySwitch>
+    <EntitySwitch.Case if={isTravisciAvailable}>
+      <Grid item md={6}>
+        <EntityTravisCIOverviewCard />
+      </Grid>
+    </EntitySwitch.Case>
+  </EntitySwitch>
+);
+
 const overviewContent = (
   <Grid container spacing={3} alignItems="stretch">
     {entityWarningContent}
     <Grid item md={6}>
       <EntityAboutCard variant="gridItem" />
     </Grid>
+    {cicdCard}
     <EntitySwitch>
       <EntitySwitch.Case if={isSonarQubeAvailable}>
         <Grid item md={6}>

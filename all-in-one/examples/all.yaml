@@ -16,3 +16,5 @@ spec:
     - ./backstage-showcase.yaml
     - ./backstage-operator.yaml
     - ./quay.yaml
+    - ./travis.yaml
+    - ./all-in-one.yaml
