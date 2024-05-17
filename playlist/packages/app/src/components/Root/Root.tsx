@@ -73,10 +73,10 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
         <SidebarItem icon={CreateComponentIcon} to="create" text="Create..." />
         {/* End global nav */}
         <SidebarItem icon={PlaylistPlayIcon} to="playlist" text="Playlists" />
-        <SidebarDivider />
+        {/* <SidebarDivider />
         <SidebarScrollWrapper>
           <SidebarItem icon={MapIcon} to="tech-radar" text="Tech Radar" />
-        </SidebarScrollWrapper>
+        </SidebarScrollWrapper> */}
       </SidebarGroup>
       <SidebarSpace />
       <SidebarDivider />
