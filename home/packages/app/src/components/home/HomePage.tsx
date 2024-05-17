@@ -1,4 +1,5 @@
 import React from 'react';
+import { Header, Page } from '@backstage/core-components';
 import {
   CustomHomepageGrid,
   WelcomeTitle,
@@ -44,13 +45,16 @@ const defaultConfig = [
 ];
 
 export const homePage = (
-  <CustomHomepageGrid config={defaultConfig}>
-    <WelcomeTitle />
-    <HomePageCompanyLogo />
-    <HomePageRandomJoke />
-    <HomePageTopVisited />
-    <HomePageStarredEntities />
-    <FeaturedDocsCard filter={{}} />
-    <HomePageRecentlyVisited />
-  </CustomHomepageGrid>
+  <Page themeId="home">
+    <Header title={<HomePageCompanyLogo />} />
+    <CustomHomepageGrid config={defaultConfig}>
+      <WelcomeTitle />
+      <HomePageCompanyLogo />
+      <HomePageRandomJoke />
+      <HomePageTopVisited />
+      <HomePageStarredEntities />
+      <FeaturedDocsCard filter={{}} />
+      <HomePageRecentlyVisited />
+    </CustomHomepageGrid>
+  </Page>
 );
