@@ -4,6 +4,7 @@ kind: Component
 metadata:
   name: backstage-plugins
   annotations:
+    backstage.io/source-location: url:https://github.com/janus-idp/backstage-plugins
     sonarqube.org/project-key: janus-idp_backstage-plugins
 spec:
   type: service

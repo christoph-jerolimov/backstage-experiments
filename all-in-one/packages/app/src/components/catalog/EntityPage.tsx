@@ -72,7 +72,14 @@ import { EntityJiraOverviewCard, isJiraAvailable } from '@roadiehq/backstage-plu
 
 import { EntityJiraDashboardContent, isJiraDashboardAvailable } from '@axis-backstage/plugin-jira-dashboard';
 
-const hasLinks = (entity: Entity): boolean => !!entity.metadata.links?.length;
+// TODO: Example todo for the todo plugin
+import { EntityTodoContent } from '@backstage-community/plugin-todo';
+
+const hasLinks = (entity: Entity): boolean =>
+  !!entity.metadata.links?.length;
+
+const isTodosAvailable = (entity: Entity): boolean =>
+  !!entity.metadata.annotations?.['backstage.io/source-location'];
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -206,6 +213,10 @@ const serviceEntityPage = (
       <EntityJiraDashboardContent />
     </EntityLayout.Route>
 
+    <EntityLayout.Route if={isTodosAvailable} path="/todos" title="TODOs">
+      <EntityTodoContent />
+    </EntityLayout.Route>
+
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
       {cicdContent}
     </EntityLayout.Route>
@@ -262,6 +273,10 @@ const websiteEntityPage = (
 
     <EntityLayout.Route if={isJiraDashboardAvailable} path="/jira-dashboard" title="Jira Dashboard">
       <EntityJiraDashboardContent />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route if={isTodosAvailable} path="/todos" title="TODOs">
+      <EntityTodoContent />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/ci-cd" title="CI/CD">

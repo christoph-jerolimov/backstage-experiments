@@ -2,12 +2,11 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: backstage-operator
+  name: todo-example
   annotations:
-    backstage.io/source-location: url:https://github.com/janus-idp/operator
-    sonarqube.org/project-key: janus-idp_operator
+    backstage.io/source-location: url:https://github.com/backstage/backstage
 spec:
   type: service
-  lifecycle: production
+  lifecycle: experimental
   owner: guests
-  system: rhdh-system
+  system: examples

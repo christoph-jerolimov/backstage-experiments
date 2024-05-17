@@ -4,6 +4,7 @@ kind: Component
 metadata:
   name: backstage-showcase
   annotations:
+    backstage.io/source-location: url:https://github.com/janus-idp/backstage-showcase
     sonarqube.org/project-key: janus-idp_backstage-showcase
 spec:
   type: service

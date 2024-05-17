@@ -15,8 +15,10 @@ spec:
     - ./backstage-plugins.yaml
     - ./backstage-showcase.yaml
     - ./backstage-operator.yaml
+    - ./backstage.yaml
     - ./odc.yaml
     - ./jira.yaml
     - ./quay.yaml
+    - ./todo.yaml
     - ./travis.yaml
     - ./all-in-one.yaml
