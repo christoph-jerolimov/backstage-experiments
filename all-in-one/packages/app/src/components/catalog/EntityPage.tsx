@@ -57,6 +57,8 @@ import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 
 import { EntityKubernetesContent, isKubernetesAvailable } from '@backstage/plugin-kubernetes';
 
+import { isQuayAvailable, QuayPage } from '@janus-idp/backstage-plugin-quay';
+
 const techdocsContent = (
   <EntityTechdocsContent>
     <TechDocsAddons>
@@ -179,6 +181,10 @@ const serviceEntityPage = (
       {techdocsContent}
     </EntityLayout.Route>
 
+    <EntityLayout.Route if={isQuayAvailable} path="/quay" title="Quay">
+      <QuayPage />
+    </EntityLayout.Route>
+
     <EntityLayout.Route if={isKubernetesAvailable} path="/kubernetes" title="Kubernetes">
       <EntityKubernetesContent refreshIntervalMs={30000} />
     </EntityLayout.Route>
@@ -208,6 +214,10 @@ const websiteEntityPage = (
 
     <EntityLayout.Route if={isTechDocsAvailable} path="/docs" title="Docs">
       {techdocsContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route if={isQuayAvailable} path="/quay" title="Quay">
+      <QuayPage />
     </EntityLayout.Route>
 
     <EntityLayout.Route if={isKubernetesAvailable} path="/kubernetes" title="Kubernetes">

@@ -1,0 +1,12 @@
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: quay-nodeinfo-example
+  annotations:
+    quay.io/repository-slug: jerolimov/nodeinfo
+spec:
+  type: service
+  lifecycle: experimental
+  owner: guests
+  system: examples

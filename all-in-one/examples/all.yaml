@@ -11,3 +11,4 @@ spec:
     - ./template/template.yaml
     - ./techdocs.yaml
     - ./kubernetes.yaml
+    - ./quay.yaml
