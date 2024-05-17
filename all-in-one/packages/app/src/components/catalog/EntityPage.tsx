@@ -40,6 +40,7 @@ import {
   EntityCatalogGraphCard,
 } from '@backstage/plugin-catalog-graph';
 import {
+  Entity,
   RELATION_API_CONSUMED_BY,
   RELATION_API_PROVIDED_BY,
   RELATION_CONSUMES_API,
@@ -60,6 +61,8 @@ import { isQuayAvailable, QuayPage } from '@janus-idp/backstage-plugin-quay';
 
 import { EntitySonarQubeCard, EntitySonarQubeContentPage } from '@backstage-community/plugin-sonarqube';
 import { isSonarQubeAvailable } from '@backstage-community/plugin-sonarqube-react';
+
+const hasLinks = (entity: Entity): boolean => !!entity.metadata.links?.length;
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -145,9 +148,13 @@ const overviewContent = (
       <EntityCatalogGraphCard variant="gridItem" height={400} />
     </Grid>
 
-    <Grid item md={4} xs={12}>
-      <EntityLinksCard />
-    </Grid>
+    <EntitySwitch>
+      <EntitySwitch.Case if={hasLinks}>
+        <Grid item md={4} xs={12}>
+          <EntityLinksCard />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
     <Grid item md={8} xs={12}>
       <EntityHasSubcomponentsCard variant="gridItem" />
     </Grid>
@@ -283,9 +290,13 @@ const apiPage = (
         <Grid item md={6} xs={12}>
           <EntityCatalogGraphCard variant="gridItem" height={400} />
         </Grid>
-        <Grid item md={4} xs={12}>
-          <EntityLinksCard />
-        </Grid>
+        <EntitySwitch>
+          <EntitySwitch.Case if={hasLinks}>
+            <Grid item md={4} xs={12}>
+              <EntityLinksCard />
+            </Grid>
+          </EntitySwitch.Case>
+        </EntitySwitch>
         <Grid container item md={12}>
           <Grid item md={6}>
             <EntityProvidingComponentsCard />
