@@ -44,4 +44,6 @@ backend.add(import('@backstage/plugin-devtools-backend'));
 
 backend.add(import('@backstage-community/plugin-playlist-backend'));
 
+backend.add(import('@backstage-community/plugin-sonarqube-backend'));
+
 backend.start();

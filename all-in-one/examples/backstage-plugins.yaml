@@ -1,0 +1,12 @@
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: backstage-plugins
+  annotations:
+    sonarqube.org/project-key: janus-idp_backstage-plugins
+spec:
+  type: service
+  lifecycle: production
+  owner: guests
+  system: rhdh-system

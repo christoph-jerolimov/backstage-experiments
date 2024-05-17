@@ -11,4 +11,8 @@ spec:
     - ./template/template.yaml
     - ./techdocs.yaml
     - ./kubernetes.yaml
+    - ./rhdh-system.yaml
+    - ./backstage-plugins.yaml
+    - ./backstage-showcase.yaml
+    - ./backstage-operator.yaml
     - ./quay.yaml

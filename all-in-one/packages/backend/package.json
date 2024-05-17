@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@backstage-community/plugin-playlist-backend": "^0.3.23",
+    "@backstage-community/plugin-sonarqube-backend": "^0.2.20",
     "@backstage/backend-common": "^0.22.0",
     "@backstage/backend-defaults": "^0.2.18",
     "@backstage/backend-tasks": "^0.5.23",

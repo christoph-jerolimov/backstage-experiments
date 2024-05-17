@@ -34,7 +34,6 @@ import {
   EntityMembersListCard,
   EntityOwnershipCard,
 } from '@backstage/plugin-org';
-import { EntityTechdocsContent } from '@backstage/plugin-techdocs';
 import { EmptyState } from '@backstage/core-components';
 import {
   Direction,
@@ -51,13 +50,16 @@ import {
   RELATION_PROVIDES_API,
 } from '@backstage/catalog-model';
 
-import { isTechDocsAvailable } from '@backstage/plugin-techdocs';
+import { EntityTechdocsContent, isTechDocsAvailable } from '@backstage/plugin-techdocs';
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 
 import { EntityKubernetesContent, isKubernetesAvailable } from '@backstage/plugin-kubernetes';
 
 import { isQuayAvailable, QuayPage } from '@janus-idp/backstage-plugin-quay';
+
+import { EntitySonarQubeCard, EntitySonarQubeContentPage } from '@backstage-community/plugin-sonarqube';
+import { isSonarQubeAvailable } from '@backstage-community/plugin-sonarqube-react';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -132,6 +134,13 @@ const overviewContent = (
     <Grid item md={6}>
       <EntityAboutCard variant="gridItem" />
     </Grid>
+    <EntitySwitch>
+      <EntitySwitch.Case if={isSonarQubeAvailable}>
+        <Grid item md={6}>
+          <EntitySonarQubeCard variant="gridItem" />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
     <Grid item md={6} xs={12}>
       <EntityCatalogGraphCard variant="gridItem" height={400} />
     </Grid>
@@ -187,6 +196,10 @@ const serviceEntityPage = (
 
     <EntityLayout.Route if={isKubernetesAvailable} path="/kubernetes" title="Kubernetes">
       <EntityKubernetesContent refreshIntervalMs={30000} />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route if={isSonarQubeAvailable} path="/sonarqube" title="SonarQube">
+      <EntitySonarQubeContentPage />
     </EntityLayout.Route>
   </EntityLayout>
 );
