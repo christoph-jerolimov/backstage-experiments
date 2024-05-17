@@ -50,6 +50,18 @@ proxy:
   #   '/test':
   #     target: 'https://example.com'
   #     changeOrigin: true
+  '/nexus-repository-manager':
+    target: 'https://nexus.corp.redhat.com/'
+    headers:
+      X-Requested-With: 'XMLHttpRequest'
+      # Uncomment the following line to access a private Nexus Repository Manager using a token
+      # Authorization: 'Bearer <YOUR TOKEN>'
+    changeOrigin: true
+    # Change to "false" in case of using self hosted Nexus Repository Manager instance with a self-signed certificate
+    secure: false
+
+nexusRepositoryManager:
+  experimentalAnnotations: true
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs

@@ -11,31 +11,30 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: example-website
+  name: nexus-maven-example
+  annotations:
+    nexus-repository-manager/format: maven2
+    nexus-repository-manager/repository: maven-central
+    nexus-repository-manager/maven.group-id: org.apache.logging.log4j
+    nexus-repository-manager/maven.artifact-id: log4j-api
 spec:
-  type: website
+  type: service
   lifecycle: experimental
   owner: guests
   system: examples
-  providesApis: [example-grpc-api]
 ---
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-api
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
 apiVersion: backstage.io/v1alpha1
-kind: API
+kind: Component
 metadata:
-  name: example-grpc-api
+  name: nexus-npm-example
+  annotations:
+    nexus-repository-manager/format: npm
+    nexus-repository-manager/repository: npmjs
+    nexus-repository-manager/group: ""
+    nexus-repository-manager/name: react
 spec:
-  type: grpc
+  type: service
   lifecycle: experimental
   owner: guests
   system: examples
-  definition: |
-    syntax = "proto3";
-
-    service Exampler {
-      rpc Example (ExampleMessage) returns (ExampleMessage) {};
-    }
-
-    message ExampleMessage {
-      string example = 1;
-    };
