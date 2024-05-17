@@ -6165,7 +6165,7 @@
   resolved "https://registry.yarnpkg.com/@mui/core-downloads-tracker/-/core-downloads-tracker-5.15.18.tgz#0f9426409a82f78423bdf504b2a5a3788656d612"
   integrity sha512-/9pVk+Al8qxAjwFUADv4BRZgMpZM4m5E+2Q/20qhVPuIJWqKp4Ie4tGExac6zu93rgPTYVQGgu+1vjiT0E+cEw==
 
-"@mui/icons-material@^5.15.7":
+"@mui/icons-material@^5.15.18", "@mui/icons-material@^5.15.7":
   version "5.15.18"
   resolved "https://registry.yarnpkg.com/@mui/icons-material/-/icons-material-5.15.18.tgz#51e42958ed671589f7a1af19b59372df884bcd61"
   integrity sha512-jGhyw02TSLM0NgW+MDQRLLRUD/K4eN9rlK2pTBTL1OtzyZmQ8nB060zK1wA0b7cVrIiG+zyrRmNAvGWXwm2N9Q==
@@ -7440,6 +7440,11 @@
   integrity sha512-DcIM6JiZklDyHF6CRD1FTXzuggAkQ+3Ncq2Wln7Kdih8GV6ZIeN9JfS6ZaQxpQUxan8/4n0J2V/R7nMeiSrb2Q==
   dependencies:
     "@react-hookz/deep-equal" "^1.0.4"
+
+"@redhat-developer/red-hat-developer-hub-theme@^0.0.40":
+  version "0.0.40"
+  resolved "https://registry.yarnpkg.com/@redhat-developer/red-hat-developer-hub-theme/-/red-hat-developer-hub-theme-0.0.40.tgz#870379e2107d40824de2c05e48b4dfe9156ccdc9"
+  integrity sha512-or2YShmjhcPCuGDYmio8abABLAkFXqcqFPhUA6QQJ9BFYHL97AFJ+h+1JNi29lZCcw4PHEUDACHJJZkN86Ld3g==
 
 "@remix-run/router@1.16.1":
   version "1.16.1"
@@ -10767,6 +10772,7 @@ apg-lite@^1.0.3:
   version "0.0.0"
   dependencies:
     "@axis-backstage/plugin-jira-dashboard" "^1.0.2"
+    "@axis-backstage/plugin-readme" "^0.7.1"
     "@backstage-community/plugin-playlist" "^0.2.11"
     "@backstage-community/plugin-sonarqube" "^0.7.17"
     "@backstage-community/plugin-sonarqube-react" "^0.1.16"

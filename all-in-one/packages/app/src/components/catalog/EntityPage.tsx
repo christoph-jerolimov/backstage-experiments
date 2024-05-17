@@ -423,9 +423,13 @@ const groupPage = (
         <Grid item xs={12} md={6}>
           <EntityMembersListCard />
         </Grid>
-        <Grid item xs={12} md={6}>
-          <EntityLinksCard />
-        </Grid>
+        <EntitySwitch>
+          <EntitySwitch.Case if={hasLinks}>
+            <Grid item md={4} xs={12}>
+              <EntityLinksCard />
+            </Grid>
+          </EntitySwitch.Case>
+        </EntitySwitch>
       </Grid>
     </EntityLayout.Route>
   </EntityLayout>
@@ -442,9 +446,13 @@ const systemPage = (
         <Grid item md={6} xs={12}>
           <EntityCatalogGraphCard variant="gridItem" height={400} />
         </Grid>
-        <Grid item md={4} xs={12}>
-          <EntityLinksCard />
-        </Grid>
+        <EntitySwitch>
+          <EntitySwitch.Case if={hasLinks}>
+            <Grid item md={4} xs={12}>
+              <EntityLinksCard />
+            </Grid>
+          </EntitySwitch.Case>
+        </EntitySwitch>
         <Grid item md={8}>
           <EntityHasComponentsCard variant="gridItem" />
         </Grid>

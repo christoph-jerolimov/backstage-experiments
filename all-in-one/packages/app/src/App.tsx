@@ -41,6 +41,8 @@ import { HomepageCompositionRoot, VisitListener } from '@backstage/plugin-home';
 import { DevToolsPage } from '@backstage/plugin-devtools';
 import { PlaylistIndexPage, PlaylistPage } from '@backstage-community/plugin-playlist';
 
+import { getThemes } from '@redhat-developer/red-hat-developer-hub-theme';
+
 const app = createApp({
   apis,
   bindRoutes({ bind }) {
@@ -63,6 +65,7 @@ const app = createApp({
   components: {
     SignInPage: props => <SignInPage {...props} auto providers={['guest']} />,
   },
+  themes: getThemes(),
 });
 
 const routes = (
