@@ -980,6 +980,39 @@
     lodash "^4.17.21"
     react-use "^17.2.4"
 
+"@axis-backstage/plugin-readme-backend@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@axis-backstage/plugin-readme-backend/-/plugin-readme-backend-0.6.0.tgz#2a6201199cb8a106a1f11119b4354c50442349d3"
+  integrity sha512-Xz7YKG2wzP9KtIk3Fpv82MGvHCxwSo0dk8m09TsecQ2XZhzv3NoyDXmRGgkM/ibJnMx6OSYbg1UWmZSWinkEvQ==
+  dependencies:
+    "@backstage/backend-common" "^0.21.7"
+    "@backstage/backend-plugin-api" "^0.6.17"
+    "@backstage/catalog-client" "^1.6.4"
+    "@backstage/catalog-model" "^1.4.5"
+    "@backstage/config" "^1.2.0"
+    "@backstage/integration" "^1.10.0"
+    "@backstage/plugin-permission-common" "^0.7.13"
+    "@types/express" "*"
+    express "^4.17.1"
+    express-promise-router "^4.1.0"
+    node-fetch "^2.6.7"
+    winston "^3.2.1"
+    yn "^4.0.0"
+
+"@axis-backstage/plugin-readme@^0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@axis-backstage/plugin-readme/-/plugin-readme-0.7.1.tgz#166326eae9cc38cd2e2f114ecd8a352866aebb24"
+  integrity sha512-mRZDmCDbOYT0b01ZxO9R7G36jiGqJmgRqokaeDh9Ac54rs3BhfeBU95dUFeMnjePFKllqzqYAA2Bk28TWN7ubA==
+  dependencies:
+    "@backstage/catalog-model" "^1.4.5"
+    "@backstage/core-components" "^0.14.4"
+    "@backstage/core-plugin-api" "^1.9.2"
+    "@backstage/plugin-catalog-react" "^1.11.3"
+    "@backstage/theme" "^0.5.3"
+    "@mui/icons-material" "^5.15.7"
+    "@mui/material" "^5.15.7"
+    react-use "^17.2.4"
+
 "@azure/abort-controller@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@azure/abort-controller/-/abort-controller-1.1.0.tgz#788ee78457a55af8a1ad342acb182383d2119249"
@@ -6131,6 +6164,13 @@
   version "5.15.18"
   resolved "https://registry.yarnpkg.com/@mui/core-downloads-tracker/-/core-downloads-tracker-5.15.18.tgz#0f9426409a82f78423bdf504b2a5a3788656d612"
   integrity sha512-/9pVk+Al8qxAjwFUADv4BRZgMpZM4m5E+2Q/20qhVPuIJWqKp4Ie4tGExac6zu93rgPTYVQGgu+1vjiT0E+cEw==
+
+"@mui/icons-material@^5.15.7":
+  version "5.15.18"
+  resolved "https://registry.yarnpkg.com/@mui/icons-material/-/icons-material-5.15.18.tgz#51e42958ed671589f7a1af19b59372df884bcd61"
+  integrity sha512-jGhyw02TSLM0NgW+MDQRLLRUD/K4eN9rlK2pTBTL1OtzyZmQ8nB060zK1wA0b7cVrIiG+zyrRmNAvGWXwm2N9Q==
+  dependencies:
+    "@babel/runtime" "^7.23.9"
 
 "@mui/material@^5.12.2":
   version "5.15.17"

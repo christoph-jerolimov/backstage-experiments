@@ -4,8 +4,9 @@ kind: Component
 metadata:
   name: all-in-one-example
   annotations:
-    # used by todo plugin
-    backstage.io/source-location: url:https://github.com/jerolimov/backstage-experiments
+    # used by todo and readme plugin
+    # readme plugin requires /blob/main/ at the end
+    backstage.io/source-location: url:https://github.com/jerolimov/backstage-experiments/blob/main/
     backstage.io/kubernetes-id: value
     quay.io/repository-slug: jerolimov/nodeinfo
     travis-ci.com/repo-slug: openshift/ruby-hello-world

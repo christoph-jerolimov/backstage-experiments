@@ -75,6 +75,8 @@ import { EntityJiraDashboardContent, isJiraDashboardAvailable } from '@axis-back
 // TODO: Example todo for the todo plugin
 import { EntityTodoContent } from '@backstage-community/plugin-todo';
 
+import { ReadmeCard } from '@axis-backstage/plugin-readme';
+
 const hasLinks = (entity: Entity): boolean =>
   !!entity.metadata.links?.length;
 
@@ -167,6 +169,9 @@ const overviewContent = (
     <Grid item md={6}>
       <EntityAboutCard variant="gridItem" />
     </Grid>
+    <Grid item md={6} xs={12}>
+      <ReadmeCard />
+    </Grid>
     <EntitySwitch>
       <EntitySwitch.Case if={isJiraAvailable}>
         <Grid item md={6}>
@@ -243,6 +248,10 @@ const serviceEntityPage = (
       </Grid>
     </EntityLayout.Route>
 
+    <EntityLayout.Route path="/readme" title="README">
+      <ReadmeCard variant="fullHeight" />
+    </EntityLayout.Route>
+
     <EntityLayout.Route if={isTechDocsAvailable} path="/docs" title="Docs">
       {techdocsContent}
     </EntityLayout.Route>
@@ -292,6 +301,10 @@ const websiteEntityPage = (
           <EntityDependsOnResourcesCard variant="gridItem" />
         </Grid>
       </Grid>
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/readme" title="README">
+      <ReadmeCard variant="fullHeight" />
     </EntityLayout.Route>
 
     <EntityLayout.Route if={isTechDocsAvailable} path="/docs" title="Docs">

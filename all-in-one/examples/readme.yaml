@@ -1,0 +1,12 @@
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: readme-example
+  annotations:
+    backstage.io/source-location: url:https://github.com/backstage/backstage/blob/master/
+spec:
+  type: service
+  lifecycle: experimental
+  owner: guests
+  system: examples

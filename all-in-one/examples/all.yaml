@@ -19,6 +19,7 @@ spec:
     - ./odc.yaml
     - ./jira.yaml
     - ./quay.yaml
+    - ./readme.yaml
     - ./todo.yaml
     - ./travis.yaml
     - ./all-in-one.yaml

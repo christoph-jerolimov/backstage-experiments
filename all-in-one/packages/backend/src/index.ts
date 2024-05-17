@@ -50,4 +50,6 @@ backend.add(import('@axis-backstage/plugin-jira-dashboard-backend'));
 
 backend.add(import('@backstage-community/plugin-todo-backend'));
 
+backend.add(import('@axis-backstage/plugin-readme-backend'));
+
 backend.start();

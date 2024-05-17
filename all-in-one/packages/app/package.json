@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@axis-backstage/plugin-jira-dashboard": "^1.0.2",
+    "@axis-backstage/plugin-readme": "^0.7.1",
     "@backstage-community/plugin-playlist": "^0.2.11",
     "@backstage-community/plugin-sonarqube": "^0.7.17",
     "@backstage-community/plugin-sonarqube-react": "^0.1.16",
