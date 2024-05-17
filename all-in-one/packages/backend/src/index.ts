@@ -42,4 +42,6 @@ backend.add(import('@backstage/plugin-kubernetes-backend/alpha'));
 
 backend.add(import('@backstage/plugin-devtools-backend'));
 
+backend.add(import('@backstage-community/plugin-playlist-backend'));
+
 backend.start();

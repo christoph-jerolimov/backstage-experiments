@@ -2160,6 +2160,62 @@
     "@babel/helper-validator-identifier" "^7.24.5"
     to-fast-properties "^2.0.0"
 
+"@backstage-community/plugin-playlist-backend@^0.3.23":
+  version "0.3.23"
+  resolved "https://registry.yarnpkg.com/@backstage-community/plugin-playlist-backend/-/plugin-playlist-backend-0.3.23.tgz#347a6e5ba5dd94ad4a95e726aee80e33318a3c10"
+  integrity sha512-XAFKNIBZAO+h/hhqfPUjzujd18dbns6UCB70mOB/bCzfyAIelqbXDJ5RRrwiz9bfFL0keCFHqbjTh6YtzK2RJA==
+  dependencies:
+    "@backstage-community/plugin-playlist-common" "^0.1.17"
+    "@backstage/backend-common" "^0.22.0"
+    "@backstage/backend-plugin-api" "^0.6.18"
+    "@backstage/catalog-client" "^1.6.5"
+    "@backstage/catalog-model" "^1.5.0"
+    "@backstage/config" "^1.2.0"
+    "@backstage/errors" "^1.2.4"
+    "@backstage/plugin-auth-node" "^0.4.13"
+    "@backstage/plugin-permission-common" "^0.7.13"
+    "@backstage/plugin-permission-node" "^0.7.29"
+    "@types/express" "*"
+    express "^4.17.1"
+    express-promise-router "^4.1.0"
+    knex "^3.0.0"
+    node-fetch "^2.6.7"
+    uuid "^9.0.0"
+    yn "^4.0.0"
+    zod "^3.22.4"
+
+"@backstage-community/plugin-playlist-common@^0.1.17":
+  version "0.1.17"
+  resolved "https://registry.yarnpkg.com/@backstage-community/plugin-playlist-common/-/plugin-playlist-common-0.1.17.tgz#1fe2f858eb95bf335e18e4f6bc6c410dd02a42d8"
+  integrity sha512-gnqLXb4Xq/MPEVCkR/QCrwjk+O7a0OEcDXt53hHhINFKu2gqX9ucJJV436Tv0zxSrGtcwIvXEuII7vRjBz8Osw==
+  dependencies:
+    "@backstage/plugin-permission-common" "^0.7.13"
+
+"@backstage-community/plugin-playlist@^0.2.11":
+  version "0.2.11"
+  resolved "https://registry.yarnpkg.com/@backstage-community/plugin-playlist/-/plugin-playlist-0.2.11.tgz#016ddbc3df3d122d154994ef411397e35762728b"
+  integrity sha512-BndwDTlqxXyfj9tbqPO63aGJffPc0sIv/4tbD8OxcGhsETxbsSpbP3bCD8W+FLBEGgwTmpldpZK0YeYPIpYBhQ==
+  dependencies:
+    "@backstage-community/plugin-playlist-common" "^0.1.17"
+    "@backstage/catalog-model" "^1.5.0"
+    "@backstage/core-components" "^0.14.7"
+    "@backstage/core-plugin-api" "^1.9.2"
+    "@backstage/errors" "^1.2.4"
+    "@backstage/plugin-catalog-common" "^1.0.23"
+    "@backstage/plugin-catalog-react" "^1.12.0"
+    "@backstage/plugin-permission-common" "^0.7.13"
+    "@backstage/plugin-permission-react" "^0.4.22"
+    "@backstage/plugin-search-react" "^1.7.11"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.61"
+    "@types/react" "^16.13.1 || ^17.0.0 || ^18.0.0"
+    lodash "^4.17.21"
+    pluralize "^8.0.0"
+    qs "^6.9.4"
+    react-hook-form "^7.13.0"
+    react-use "^17.2.4"
+
 "@backstage/app-defaults@^1.5.5":
   version "1.5.5"
   resolved "https://registry.yarnpkg.com/@backstage/app-defaults/-/app-defaults-1.5.5.tgz#0a5e8e25c4941efc974a31fe0cb83d00e3c52325"
@@ -10322,6 +10378,7 @@ apg-lite@^1.0.3:
 "app@link:packages/app":
   version "0.0.0"
   dependencies:
+    "@backstage-community/plugin-playlist" "^0.2.11"
     "@backstage/app-defaults" "^1.5.5"
     "@backstage/catalog-model" "^1.5.0"
     "@backstage/cli" "^0.26.5"
@@ -21190,7 +21247,7 @@ react-helmet@6.1.0:
     react-fast-compare "^3.1.1"
     react-side-effect "^2.1.0"
 
-react-hook-form@^7.12.2:
+react-hook-form@^7.12.2, react-hook-form@^7.13.0:
   version "7.51.4"
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.51.4.tgz#c3a47aeb22b699c45de9fc12b58763606cb52f0c"
   integrity sha512-V14i8SEkh+V1gs6YtD0hdHYnoL4tp/HX/A45wWQN15CYr9bFRmmRdYStSO5L65lCCZRF+kYiSKhm9alqbcdiVA==
