@@ -38,6 +38,7 @@ import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 import { HomepageCompositionRoot, VisitListener } from '@backstage/plugin-home';
+import { DevToolsPage } from '@backstage/plugin-devtools';
 
 const app = createApp({
   apis,
@@ -100,6 +101,7 @@ const routes = (
     </Route>
     <Route path="/settings" element={<UserSettingsPage />} />
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
+    <Route path="/devtools" element={<DevToolsPage />} />
   </FlatRoutes>
 );
 
