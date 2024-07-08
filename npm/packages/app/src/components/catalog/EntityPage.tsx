@@ -53,6 +53,7 @@ import {
 
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
+import { isNpmReleaseAvailable, NpmInfoCard, NpmReleaseOverviewCard, NpmReleaseTableCard } from '@internal/backstage-plugin-npm';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -127,6 +128,20 @@ const overviewContent = (
     <Grid item md={6}>
       <EntityAboutCard variant="gridItem" />
     </Grid>
+
+    <EntitySwitch>
+      <EntitySwitch.Case if={isNpmReleaseAvailable}>
+        <Grid container item md={6} xs={12}>
+          <Grid item md={12}>
+            <NpmInfoCard />
+          </Grid>
+          <Grid item md={12}>
+            <NpmReleaseOverviewCard />
+          </Grid>
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
+
     <Grid item md={6} xs={12}>
       <EntityCatalogGraphCard variant="gridItem" height={400} />
     </Grid>
@@ -148,6 +163,10 @@ const serviceEntityPage = (
 
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
       {cicdContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route if={isNpmReleaseAvailable} path="/npm-releases" title="NPM Releases">
+      <NpmReleaseTableCard />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/api" title="API">
@@ -188,6 +207,10 @@ const websiteEntityPage = (
       {cicdContent}
     </EntityLayout.Route>
 
+    <EntityLayout.Route if={isNpmReleaseAvailable} path="/npm-releases" title="NPM Releases">
+      <NpmReleaseTableCard />
+    </EntityLayout.Route>
+
     <EntityLayout.Route path="/dependencies" title="Dependencies">
       <Grid container spacing={3} alignItems="stretch">
         <Grid item md={6}>
@@ -216,6 +239,10 @@ const defaultEntityPage = (
   <EntityLayout>
     <EntityLayout.Route path="/" title="Overview">
       {overviewContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route if={isNpmReleaseAvailable} path="/npm-releases" title="NPM Releases">
+      <NpmReleaseTableCard />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/docs" title="Docs">
