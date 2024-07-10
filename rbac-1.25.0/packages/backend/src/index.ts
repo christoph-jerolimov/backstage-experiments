@@ -28,10 +28,13 @@ backend.add(
 );
 
 // permission plugin
-backend.add(import('@backstage/plugin-permission-backend/alpha'));
-backend.add(
-  import('@backstage/plugin-permission-backend-module-allow-all-policy'),
-);
+// backend.add(import('@backstage/plugin-permission-backend/alpha'));
+// backend.add(
+//   import('@backstage/plugin-permission-backend-module-allow-all-policy'),
+// );
+
+// Replace it with rbac permission backend:
+backend.add(import('@janus-idp/backstage-plugin-rbac-backend'));
 
 // search plugin
 backend.add(import('@backstage/plugin-search-backend/alpha'));

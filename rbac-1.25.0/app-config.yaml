@@ -68,6 +68,18 @@ auth:
     # See https://backstage.io/docs/auth/guest/provider
     guest: {}
 
+permission:
+  enabled: true
+  rbac:
+    pluginsWithPermission:
+      - catalog
+      - permission
+      - scaffolder
+    admin:
+      users:
+        - name: user:development/guest
+        - name: group:default/admins
+
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
 
