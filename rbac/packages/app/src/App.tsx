@@ -37,6 +37,8 @@ import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 
+import { RbacPage } from '@janus-idp/backstage-plugin-rbac';
+
 const app = createApp({
   apis,
   bindRoutes({ bind }) {
@@ -95,6 +97,7 @@ const routes = (
     </Route>
     <Route path="/settings" element={<UserSettingsPage />} />
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
+    <Route path="/rbac" element={<RbacPage />} />
   </FlatRoutes>
 );
 
