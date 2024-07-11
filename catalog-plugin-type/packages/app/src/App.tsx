@@ -4,6 +4,7 @@ import { apiDocsPlugin, ApiExplorerPage } from '@backstage/plugin-api-docs';
 import {
   CatalogEntityPage,
   CatalogIndexPage,
+  CatalogTable,
   catalogPlugin,
 } from '@backstage/plugin-catalog';
 import {
@@ -28,7 +29,10 @@ import { Root } from './components/Root';
 
 import {
   AlertDisplay,
+  Content,
   OAuthRequestDialog,
+  PageWithHeader,
+  Select,
   SignInPage,
 } from '@backstage/core-components';
 import { createApp } from '@backstage/app-defaults';
@@ -36,6 +40,9 @@ import { AppRouter, FlatRoutes } from '@backstage/core-app-api';
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
+
+import { EntityKindPicker, UserListPicker, EntityOwnerPicker, EntityLifecyclePicker, EntityTagPicker, EntityListProvider, CatalogFilterLayout, useEntityTypeFilter } from '@backstage/plugin-catalog-react';
+import { Box } from '@material-ui/core';
 
 const app = createApp({
   apis,
@@ -61,9 +68,79 @@ const app = createApp({
   },
 });
 
+enum BackstagePluginTypes {
+  Meta = 'backstage-plugin',
+  Frontend = 'backstage-frontend-plugin',
+  Backend = 'backstage-backend-plugin',
+  CommonLibrary = 'backstage-common-library',
+  NodeLibrary = 'backstage-node-library',
+}
+
+export const PluginTypePicker = () => {
+  const { availableTypes, selectedTypes, setSelectedTypes } = useEntityTypeFilter();
+
+  React.useEffect(() => {
+    setSelectedTypes(['backstage-plugin']);
+  }, [setSelectedTypes]);
+
+  if (availableTypes.length === 0) return null;
+
+  const items: Array<{ label: string, value: string }> = [
+    { label: 'All types', value: 'all' },
+    { label: 'Meta', value: BackstagePluginTypes.Meta },
+    { label: 'Frontend', value: BackstagePluginTypes.Frontend },
+    { label: 'Backend', value: BackstagePluginTypes.Backend },
+    { label: 'Common library', value: BackstagePluginTypes.CommonLibrary },
+    { label: 'Node library', value: BackstagePluginTypes.NodeLibrary },
+  ];
+
+  return (
+    <Box pb={1} pt={1}>
+      <Select
+        label={'Plugin type'}
+        items={items}
+        selected={(items.length > 1 ? selectedTypes[0] : undefined) ?? 'all'}
+        onChange={value =>
+          setSelectedTypes(value === 'all' ? [BackstagePluginTypes.Meta, BackstagePluginTypes.Frontend, BackstagePluginTypes.Backend, BackstagePluginTypes.CommonLibrary, BackstagePluginTypes.NodeLibrary] : [String(value)])
+        }
+      />
+    </Box>
+  );
+}
+
+export const PluginsPage = () => {
+  return (
+    <PageWithHeader
+      themeId="plugins"
+      title="Plugins"
+      pageTitleOverride="APIs"
+    >
+      <Content>
+        <EntityListProvider>
+          <CatalogFilterLayout>
+            <CatalogFilterLayout.Filters>
+              <EntityKindPicker initialFilter="component" hidden />
+              <PluginTypePicker />
+              <UserListPicker />
+              <EntityOwnerPicker />
+              <EntityLifecyclePicker />
+              <EntityTagPicker />
+            </CatalogFilterLayout.Filters>
+            <CatalogFilterLayout.Content>
+              <CatalogTable />
+            </CatalogFilterLayout.Content>
+          </CatalogFilterLayout>
+        </EntityListProvider>
+      </Content>
+    </PageWithHeader>
+  );
+
+}
+
 const routes = (
   <FlatRoutes>
     <Route path="/" element={<Navigate to="catalog" />} />
+
     <Route path="/catalog" element={<CatalogIndexPage />} />
     <Route
       path="/catalog/:namespace/:kind/:name"
@@ -71,6 +148,15 @@ const routes = (
     >
       {entityPage}
     </Route>
+
+    <Route path="/plugins" element={<PluginsPage />} />
+    <Route
+      path="/plugins/:namespace/:kind/:name"
+      element={<CatalogEntityPage />}
+    >
+      {entityPage}
+    </Route>
+
     <Route path="/docs" element={<TechDocsIndexPage />} />
     <Route
       path="/docs/:namespace/:kind/:name/*"

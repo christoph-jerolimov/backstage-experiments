@@ -1,4 +1,14 @@
 ---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-group
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: guests
+spec:
+  type: team
+  children: []
+
+---
 # https://backstage.io/docs/features/software-catalog/descriptor-format#kind-user
 apiVersion: backstage.io/v1alpha1
 kind: User
@@ -6,12 +16,31 @@ metadata:
   name: guest
 spec:
   memberOf: [guests]
+
 ---
 # https://backstage.io/docs/features/software-catalog/descriptor-format#kind-group
 apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
-  name: guests
+  name: rhdh-team
+spec:
+  type: team
+  children: [rhdh-core-team, rhdh-ui-team]
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-group
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: rhdh-core-team
+spec:
+  type: team
+  children: []
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-group
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: rhdh-ui-team
 spec:
   type: team
   children: []
