@@ -15,7 +15,6 @@ export interface NpmRegistryPackage {
   keywords?: string[];
   license?: string;
   'dist-tags': {
-    latest: string;
     [tag: string]: string;
   };
   versions: {
@@ -32,12 +31,16 @@ export interface NpmRegistryPackage {
       email: string;
       url: string;
     } | string;
+  homepage?: string;
   repository?: {
-    type: string;
-    url: string;
+    type?: string;
+    url?: string;
     directory?: string;
   };
-  _attachments: {
+  bugs?: {
+    url?: string;
+  }
+  _attachments?: {
     [filename: string]: {
       content_type: string;
       data: string;

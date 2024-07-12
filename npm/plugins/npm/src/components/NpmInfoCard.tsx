@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { MissingAnnotationEmptyState, useEntity } from '@backstage/plugin-catalog-react';
 import useAsync from 'react-use/esm/useAsync';
 import { DateTime } from 'luxon';
-import { NPM_PACKAGE_ANNOTATION } from '../annotations';
+import { NPM_PACKAGE_ANNOTATION, NPM_STABLE_TAG_ANNOTATION } from '../annotations';
 import { API } from '../api';
 
 // From https://github.com/backstage/backstage/blob/master/plugins/catalog/src/components/AboutCard/AboutField.tsx
@@ -62,18 +62,33 @@ export function NpmInfoCard() {
     );
   }
 
-  const latestVersion = packageInfo.value?.['dist-tags']?.latest;
+  const latestTag = entity.metadata.annotations?.[NPM_STABLE_TAG_ANNOTATION] ?? 'latest';
+  const latestVersion = packageInfo.value?.['dist-tags']?.[latestTag];
   const latestPublishedAt = latestVersion ? packageInfo.value?.time?.[latestVersion] : undefined;
 
   const npmLink = `https://www.npmjs.com/package/${packageName}`;
 
   let repositoryLink: string | undefined;
-  if (packageInfo.value?.repository?.url?.startsWith('https://')) {
-    repositoryLink = packageInfo.value?.repository?.url;
-    if (repositoryLink.startsWith('https://github.com/') && packageInfo.value.repository.directory) {
-      repositoryLink = `${repositoryLink}/tree/main/${packageInfo.value.repository.directory}`;
+  if (packageInfo.value?.repository?.url) {
+    let url = packageInfo.value.repository.url;
+    if (url.startsWith('git+https://')) {
+      url = url.slice('git+'.length);
+    }
+    if (url.endsWith('.git')) {
+      url = url.slice(0, -'.git'.length);
+    }
+    if (url.startsWith('https://')) {
+      if (url.startsWith('https://github.com/') && packageInfo.value.repository.directory) {
+        repositoryLink = `${url}/tree/main/${packageInfo.value.repository.directory}`;
+      } else {
+        repositoryLink = url
+      }
     }
   }
+
+  const bugsLink = packageInfo.value?.bugs?.url;
+
+  const homepageLink = packageInfo.value?.homepage;
 
   return (
     <Card>
@@ -123,7 +138,21 @@ export function NpmInfoCard() {
               label="Code repository"
               value={<Link href={repositoryLink}>{repositoryLink}</Link>}
             />
-        ) : null}
+          ) : null}
+
+          {bugsLink ? (
+            <Item
+              label="Issue tracker"
+              value={<Link href={bugsLink}>{bugsLink}</Link>}
+            />
+          ) : null}
+
+          {homepageLink ? (
+            <Item
+              label="Homepage"
+              value={<Link href={homepageLink}>{homepageLink}</Link>}
+            />
+          ) : null}
         </Grid>
       </CardContent>
     </Card>
