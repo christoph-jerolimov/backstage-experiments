@@ -53,7 +53,7 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.61",
     "@mui/material": "^5.16.1",
-    "@redhat-developer/red-hat-developer-hub-theme": "0.0.57",
+    "@redhat-developer/red-hat-developer-hub-theme": "^0.0.63",
     "@roadiehq/backstage-plugin-jira": "^2.5.8",
     "@roadiehq/backstage-plugin-travis-ci": "^2.1.23",
     "history": "^5.0.0",
