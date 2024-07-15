@@ -34,8 +34,6 @@ import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 
-import { ThemeProvider } from '@material-ui/core';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import LightIcon from '@material-ui/icons/WbSunnySharp';
 import DarkIcon from '@material-ui/icons/Brightness2';
 
@@ -45,17 +43,16 @@ import AutocompleteV4 from '@material-ui/lab/Autocomplete';
 import AutocompleteV5 from '@mui/material/Autocomplete';
 import TextFieldV4 from '@material-ui/core/TextField';
 import TextFieldV5 from '@mui/material/TextField';
-import { ThemeOptions } from '@mui/material';
+
 import {
   createUnifiedTheme,
   genPageTheme,
-  lightTheme,
-  darkTheme,
   themes,
+  UnifiedThemeOptions,
   UnifiedThemeProvider,
 } from '@backstage/theme';
 
-const components: ThemeOptions['components'] = {
+const components: UnifiedThemeOptions['components'] = {
   MuiButton: {
     defaultProps: {
       disableRipple: true,
@@ -243,30 +240,8 @@ const app = createApp({
   },
   themes: [
     {
-      id: 'backstage-light-theme',
-      title: 'Backstage Light Theme',
-      variant: 'light',
-      icon: <LightIcon />,
-      Provider: ({ children }) => (
-        <ThemeProvider theme={lightTheme}>
-          <CssBaseline>{children}</CssBaseline>
-        </ThemeProvider>
-      ),
-    },
-    {
-      id: 'backstage-dark-theme',
-      title: 'Backstage Dark Theme',
-      variant: 'dark',
-      icon: <DarkIcon />,
-      Provider: ({ children }) => (
-        <ThemeProvider theme={darkTheme}>
-          <CssBaseline>{children}</CssBaseline>
-        </ThemeProvider>
-      ),
-    },
-    {
-      id: 'my-light-theme',
-      title: 'My Light Theme',
+      id: 'light',
+      title: 'Custom Light Theme',
       variant: 'light',
       icon: <LightIcon />,
       Provider: ({ children }) => (
@@ -276,12 +251,34 @@ const app = createApp({
       ),
     },
     {
-      id: 'my-dark-theme',
-      title: 'My Dark Theme',
+      id: 'dark',
+      title: 'Custom Dark Theme',
       variant: 'dark',
       icon: <DarkIcon />,
       Provider: ({ children }) => (
         <UnifiedThemeProvider theme={myDarkTheme}>
+          {children}
+        </UnifiedThemeProvider>
+      ),
+    },
+    {
+      id: 'backstage-light',
+      title: 'Backstage Light Theme',
+      variant: 'light',
+      icon: <LightIcon />,
+      Provider: ({ children }) => (
+        <UnifiedThemeProvider theme={themes.light}>
+          {children}
+        </UnifiedThemeProvider>
+      ),
+    },
+    {
+      id: 'backstage-dark',
+      title: 'Backstage Dark Theme',
+      variant: 'dark',
+      icon: <DarkIcon />,
+      Provider: ({ children }) => (
+        <UnifiedThemeProvider theme={themes.dark}>
           {children}
         </UnifiedThemeProvider>
       ),
