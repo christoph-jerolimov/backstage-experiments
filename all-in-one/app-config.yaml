@@ -1,6 +1,18 @@
 app:
   title: Scaffolded Backstage App
   baseUrl: http://localhost:3000
+  branding:
+    theme:
+      light:
+        primaryColor: '#ff0000'
+        headerColor1: '#00ff00'
+        headerColor2: '#0000ff'
+        navigationIndicatorColor: '#ffff00'
+      dark:
+        primaryColor: '#ff0000'
+        headerColor1: '#00ff00'
+        headerColor2: '#0000ff'
+        navigationIndicatorColor: '#ffff00'
 
 organization:
   name: My Company
