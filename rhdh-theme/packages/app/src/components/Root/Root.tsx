@@ -83,6 +83,7 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
         to="/settings"
       >
         <SidebarSettings />
+        <SidebarItem icon={HomeIcon} to="button-test" text="Button test" />
       </SidebarGroup>
     </Sidebar>
     {children}

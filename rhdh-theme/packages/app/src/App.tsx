@@ -37,7 +37,14 @@ import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 
-import { getAllThemes as getThemes } from '@redhat-developer/red-hat-developer-hub-theme';
+import { getThemes } from '@redhat-developer/red-hat-developer-hub-theme';
+
+import ButtonV4 from '@material-ui/core/Button';
+import ButtonV5 from '@mui/material/Button';
+import AutocompleteV4 from '@material-ui/lab/Autocomplete';
+import AutocompleteV5 from '@mui/material/Autocomplete';
+import TextFieldV4 from '@material-ui/core/TextField';
+import TextFieldV5 from '@mui/material/TextField';
 
 const app = createApp({
   apis,
@@ -63,6 +70,77 @@ const app = createApp({
   },
   themes: getThemes(),
 });
+
+const ButtonTest = () => {
+  const movies = [
+    { title: 'The Shawshank Redemption', year: 1994 },
+    { title: 'The Godfather', year: 1972 },
+    { title: 'The Godfather: Part II', year: 1974 },
+    { title: 'The Dark Knight', year: 2008 },
+    { title: '12 Angry Men', year: 1957 },
+    { title: "Schindler's List", year: 1993 },
+    { title: 'Pulp Fiction', year: 1994 },
+    { title: 'The Lord of the Rings: The Return of the King', year: 2003 },
+    { title: 'The Good, the Bad and the Ugly', year: 1966 },
+    { title: 'Fight Club', year: 1999 },
+  ];
+
+  return (
+    <div>
+      <h1>Material UI v4 buttons</h1>
+      <div>
+        <ButtonV4 variant="contained">Default</ButtonV4>
+        <ButtonV4 variant="contained" color="primary">
+          Primary
+        </ButtonV4>
+        <ButtonV4 variant="contained" color="secondary">
+          Secondary
+        </ButtonV4>
+        <ButtonV4 variant="contained" disabled>
+          Disabled
+        </ButtonV4>
+        <ButtonV4 variant="contained" color="primary" href="#contained-buttons">
+          Link
+        </ButtonV4>
+      </div>
+
+      <h1>MUI v5 buttons</h1>
+      <div>
+        <ButtonV5 variant="contained">Default</ButtonV5>
+        <ButtonV5 variant="contained" color="primary">
+          Primary
+        </ButtonV5>
+        <ButtonV5 variant="contained" color="secondary">
+          Secondary
+        </ButtonV5>
+        <ButtonV5 variant="contained" disabled>
+          Disabled
+        </ButtonV5>
+        <ButtonV5 variant="contained" color="primary" href="#contained-buttons">
+          Link
+        </ButtonV5>
+      </div>
+
+      <h1>Material UI v4 Autocomplete</h1>
+      <div>
+        <AutocompleteV4
+          options={movies}
+          renderInput={(params) => <TextFieldV4 {...params} label="Movie" />}
+          getOptionLabel={(option) => option.title}
+        />
+      </div>
+
+      <h1>MUI v5 Autocomplete</h1>
+      <div>
+        <AutocompleteV5
+          options={movies}
+          renderInput={(params) => <TextFieldV5 {...params} label="Movie" />}
+          getOptionLabel={(option) => option.title}
+        />
+      </div>
+    </div>
+  );
+}
 
 const routes = (
   <FlatRoutes>
@@ -97,6 +175,7 @@ const routes = (
       {searchPage}
     </Route>
     <Route path="/settings" element={<UserSettingsPage />} />
+    <Route path="/button-test" element={<ButtonTest />} />
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
   </FlatRoutes>
 );
