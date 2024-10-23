@@ -1,55 +1,7 @@
 # npm plugin
 
-## Screenshots
+This is a test app, the plugin code itself has been moved
 
-### Npm info card
+https://github.com/backstage/community-plugins/tree/main/workspaces/npm
 
-![Screenshot](docs/npm-info-card.png)
-
-### Npm release overview card
-
-![Screenshot](docs/npm-release-overview-card.png)
-
-### Extended catalog entity overview tab (example)
-
-![Screenshot](docs/catalog-entity-overview-tab.png)
-
-### New catalog entity npm release tab
-
-![Screenshot](docs/catalog-entity-npm-release-tab.png)
-
-## Setup
-
-Add to `packages/app/src/components/catalog/EntityPage.tsx`:
-
-After all other imports:
-
-```tsx
-import { isNpmReleaseAvailable, NpmInfoCard, NpmReleaseOverviewCard, NpmReleaseTableCard } from '@internal/backstage-plugin-npm';
-```
-
-Add to `const overviewContent` after `EntityAboutCard`:
-
-```tsx
-    <EntitySwitch>
-      <EntitySwitch.Case if={isNpmReleaseAvailable}>
-        <Grid container item md={6} xs={12}>
-          <Grid item md={12}>
-            <NpmInfoCard />
-          </Grid>
-          <Grid item md={12}>
-            <NpmReleaseOverviewCard />
-          </Grid>
-        </Grid>
-      </EntitySwitch.Case>
-    </EntitySwitch>
-```
-
-Add to `const serviceEntityPage` and `const websiteEntityPage` after the `/ci-cd` case
-and to `const defaultEntityPage` between the `/` and `/docs` routecase.
-
-```tsx
-    <EntityLayout.Route if={isNpmReleaseAvailable} path="/npm-releases" title="NPM Releases">
-      <NpmReleaseTableCard />
-    </EntityLayout.Route>
-```
+https://www.npmjs.com/package/@backstage-community/plugin-npm

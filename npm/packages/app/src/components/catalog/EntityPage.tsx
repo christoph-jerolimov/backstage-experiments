@@ -53,7 +53,7 @@ import {
 
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
-import { isNpmReleaseAvailable, NpmInfoCard, NpmReleaseOverviewCard, NpmReleaseTableCard } from '@internal/backstage-plugin-npm';
+import { isNpmAvailable, NpmInfoCard, NpmReleaseOverviewCard, NpmReleaseTableCard } from '@backstage-community/plugin-npm';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -130,7 +130,7 @@ const overviewContent = (
     </Grid>
 
     <EntitySwitch>
-      <EntitySwitch.Case if={isNpmReleaseAvailable}>
+      <EntitySwitch.Case if={isNpmAvailable}>
         <Grid container item md={6} xs={12}>
           <Grid item md={12}>
             <NpmInfoCard />
@@ -165,7 +165,7 @@ const serviceEntityPage = (
       {cicdContent}
     </EntityLayout.Route>
 
-    <EntityLayout.Route if={isNpmReleaseAvailable} path="/npm-releases" title="NPM Releases">
+    <EntityLayout.Route if={isNpmAvailable} path="/npm-releases" title="NPM Releases">
       <NpmReleaseTableCard />
     </EntityLayout.Route>
 
@@ -207,7 +207,7 @@ const websiteEntityPage = (
       {cicdContent}
     </EntityLayout.Route>
 
-    <EntityLayout.Route if={isNpmReleaseAvailable} path="/npm-releases" title="NPM Releases">
+    <EntityLayout.Route if={isNpmAvailable} path="/npm-releases" title="NPM Releases">
       <NpmReleaseTableCard />
     </EntityLayout.Route>
 
@@ -241,7 +241,7 @@ const defaultEntityPage = (
       {overviewContent}
     </EntityLayout.Route>
 
-    <EntityLayout.Route if={isNpmReleaseAvailable} path="/npm-releases" title="NPM Releases">
+    <EntityLayout.Route if={isNpmAvailable} path="/npm-releases" title="NPM Releases">
       <NpmReleaseTableCard />
     </EntityLayout.Route>
 
