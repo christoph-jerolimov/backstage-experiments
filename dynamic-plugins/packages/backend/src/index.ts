@@ -7,6 +7,7 @@
  */
 
 import { createBackend } from '@backstage/backend-defaults';
+import { dynamicPluginsFeatureLoader } from '@backstage/backend-dynamic-feature-service';
 
 const backend = createBackend();
 
@@ -50,5 +51,8 @@ backend.add(import('@backstage/plugin-search-backend-module-techdocs/alpha'));
 
 // kubernetes
 backend.add(import('@backstage/plugin-kubernetes-backend/alpha'));
+
+// dynamic plugins
+backend.add(dynamicPluginsFeatureLoader)
 
 backend.start();
