@@ -37,7 +37,7 @@ import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 
-import { getThemes } from '@redhat-developer/red-hat-developer-hub-theme';
+import { getAllThemes } from '@red-hat-developer-hub/backstage-plugin-theme';
 
 import ButtonV4 from '@material-ui/core/Button';
 import ButtonV5 from '@mui/material/Button';
@@ -68,7 +68,7 @@ const app = createApp({
   components: {
     SignInPage: props => <SignInPage {...props} auto providers={['guest']} />,
   },
-  themes: getThemes(),
+  themes: getAllThemes(),
 });
 
 const ButtonTest = () => {
