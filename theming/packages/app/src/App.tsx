@@ -44,15 +44,145 @@ import AutocompleteV5 from '@mui/material/Autocomplete';
 import TextFieldV4 from '@material-ui/core/TextField';
 import TextFieldV5 from '@mui/material/TextField';
 
+import { AppTheme } from '@backstage/core-plugin-api';
 import {
+  createBaseThemeOptions,
   createUnifiedTheme,
   genPageTheme,
-  themes,
+  palettes as backstagePalettes,
+  defaultComponentThemes as backstageComponents,
+  themes as backstageThemes,
   UnifiedThemeOptions,
   UnifiedThemeProvider,
 } from '@backstage/theme';
 
+import RedHatDisplayVFwoff2 from './assets/fonts/RedHatDisplay/RedHatDisplayVF.woff2';
+import RedHatDisplayVFItalicwoff2 from './assets/fonts/RedHatDisplay/RedHatDisplayVF-Italic.woff2';
+import RedHatTextVFwoff2 from './assets/fonts/RedHatText/RedHatTextVF.woff2';
+import RedHatTextVFItalicwoff2 from './assets/fonts/RedHatText/RedHatTextVF-Italic.woff2';
+import RedHatMonoVFwoff2 from './assets/fonts/RedHatMono/RedHatMonoVF.woff2';
+import RedHatMonoVFItalicwoff2 from './assets/fonts/RedHatMono/RedHatMonoVF-Italic.woff2';
+import { CSSObject } from '@mui/material';
+
+const RedHatDisplayVF = {
+  fontFamily: 'RedHatDisplay',
+  src: `url(${RedHatDisplayVFwoff2}) format('woff2-variations')`,
+  fontWeight: '300 900',
+  fontStyle: 'normal',
+  fontDisplay: 'fallback',
+};
+
+const RedHatDisplayVFItalic = {
+  fontFamily: 'RedHatDisplay',
+  src: `url(${RedHatDisplayVFItalicwoff2}) format('woff2-variations')`,
+  fontWeight: '300 900',
+  fontStyle: 'italic',
+  fontDisplay: 'fallback',
+};
+
+const RedHatTextVF = {
+  fontFamily: 'RedHatText',
+  src: `url(${RedHatTextVFwoff2}) format('woff2-variations')`,
+  fontWeight: '300 700',
+  fontStyle: 'normal',
+  fontDisplay: 'fallback',
+};
+
+const RedHatTextVFItalic = {
+  fontFamily: 'RedHatText',
+  src: `url(${RedHatTextVFItalicwoff2}) format('woff2-variations')`,
+  fontWeight: '300 700',
+  fontStyle: 'italic',
+  fontDisplay: 'fallback',
+};
+
+const RedHatMonoVF = {
+  fontFamily: 'RedHatMono',
+  src: `url(${RedHatMonoVFwoff2}) format('woff2-variations')`,
+  fontWeight: '300 700',
+  fontStyle: 'normal',
+  fontDisplay: 'fallback',
+};
+
+const RedHatMonoVFItalic = {
+  fontFamily: 'RedHatMono',
+  src: `url(${RedHatMonoVFItalicwoff2}) format('woff2-variations')`,
+  fontWeight: '300 700',
+  fontStyle: 'italic',
+  fontDisplay: 'fallback',
+};
+
+const redHatFonts = {
+  text: [
+    'RedHatText',
+    '"Helvetica Neue"',
+    '-apple-system',
+    '"Segoe UI"',
+    'Roboto',
+    'Helvetica',
+    'Arial',
+    'sans-serif',
+  ].join(', '),
+
+  heading: [
+    'RedHatDisplay',
+    '"Helvetica Neue"',
+    '-apple-system',
+    '"Segoe UI"',
+    'Roboto',
+    'Helvetica',
+    'Arial',
+    'sans-serif',
+  ].join(', '),
+
+  monospace: [
+    'RedHatMono',
+    '"Liberation Mono"',
+    'consolas',
+    '"SFMono-Regular"',
+    'menlo',
+    'monaco',
+    '"Courier New"',
+    'monospace',
+  ].join(', '),
+};
+
+console.log('xxx redHatFonts', redHatFonts);
+console.log('xxx backstageComponents', backstageComponents);
+
 const components: UnifiedThemeOptions['components'] = {
+  MuiCssBaseline: {
+    styleOverrides: (theme) => {
+      const backstageOverrides = backstageComponents!.MuiCssBaseline!.styleOverrides!;
+      const backstageStyles = typeof backstageOverrides === 'function' ?
+        backstageOverrides(theme) as CSSObject :
+        backstageOverrides as CSSObject;
+
+      console.log('xxx MuiCssBaseline backstageStyles', theme.typography.fontFamily, backstageStyles);
+      
+      return {
+        ...backstageStyles,
+        '@font-face': [
+          RedHatDisplayVF,
+          RedHatDisplayVFItalic,
+          RedHatTextVF,
+          RedHatTextVFItalic,
+          RedHatMonoVF,
+          RedHatMonoVFItalic,
+        ],
+        'body': {
+          ...backstageStyles.body as CSSObject,
+          fontFamily: redHatFonts.text,
+        },
+        'h1, h2, h3, h4, h5, h6': {
+          fontFamily: redHatFonts.heading,
+        },
+        'pre, code': {
+          fontFamily: redHatFonts.monospace,
+        }
+      };
+    },
+  },
   MuiButton: {
     defaultProps: {
       disableRipple: true,
@@ -101,6 +231,36 @@ const components: UnifiedThemeOptions['components'] = {
       },
     },
   },
+  BackstageHeaderTabs: {
+    styleOverrides: {
+      defaultTab: {
+        // This overrides just specified values and keep everything
+        // else from the component defaults.
+        // This increases the font-size for readability
+        // and to align it with PatternFly 5.
+        // Increase fontSize from 0.75rem (12px) to 1rem (16px). 
+        fontSize: '1rem',
+        // Reduce fontWeight from 700 to 500 to make the bigger size
+        // better visible.
+        fontWeight: '500',
+      },
+    },
+  },
+  BackstageSidebarItem: {
+    styleOverrides: {
+      label: {
+        // This overrides just specified values and keep everything
+        // else from the component defaults.
+        // This increases the font-size for readability
+        // and to align it with PatternFly 5.
+        // Increase fontSize from 0.875rem (14px) to 1rem (16px). 
+        fontSize: '1rem',
+        // Reduce fontWeight from bold to normal to make the bigger size
+        // better visible.
+        fontWeight: 'normal',
+      }
+    },
+  },
   BackstageIconLinkVertical: {
     styleOverrides: {
       label: {
@@ -110,49 +270,106 @@ const components: UnifiedThemeOptions['components'] = {
   },
 }
 
-const myLightTheme = createUnifiedTheme({
-  palette: {
-    ...themes.light.getTheme('v5')?.palette,
-    primary: {
-      main: 'rgb(0, 102, 204)',
-    },
-    secondary: {
-      main: 'rgb(0, 64, 128)',
-    },
-    error: {
-      main: '#8c4351',
-    },
-    warning: {
-      main: '#8f5e15',
-    },
-    info: {
-      main: '#34548a',
-    },
-    success: {
-      main: '#485e30',
-    },
-    background: {
-      default: '#F0F0F0',
-      paper: '#FFFFFF',
-    },
-    banner: {
-      info: '#34548a',
-      error: '#8c4351',
-      text: '#343b58',
-      link: '#565a6e',
-    },
-    errorBackground: '#FAEAE8',
-    warningBackground: '#FDF7E7',
-    infoBackground: '#E7F1FA',
-    navigation: {
-      background: 'rgb(33, 36, 39)',
-      indicator: 'rgb(115, 188, 247)',
-      color: '#ffffff',
-      selectedColor: 'rgb(78, 82, 85)',
-    },
+const myLightPalette: UnifiedThemeOptions["palette"] = {
+  ...backstagePalettes.light,
+  primary: {
+    main: 'rgb(0, 102, 204)',
   },
+  secondary: {
+    main: 'rgb(0, 64, 128)',
+  },
+  error: {
+    main: '#8c4351',
+  },
+  warning: {
+    main: '#8f5e15',
+  },
+  info: {
+    main: '#34548a',
+  },
+  success: {
+    main: '#485e30',
+  },
+  background: {
+    default: '#F0F0F0',
+    paper: '#FFFFFF',
+  },
+  banner: {
+    info: '#34548a',
+    error: '#8c4351',
+    text: '#343b58',
+    link: '#565a6e',
+  },
+  errorBackground: '#FAEAE8',
+  warningBackground: '#FDF7E7',
+  infoBackground: '#E7F1FA',
+  navigation: {
+    background: 'rgb(33, 36, 39)',
+    indicator: 'rgb(115, 188, 247)',
+    color: '#ffffff',
+    selectedColor: 'rgb(78, 82, 85)',
+  },
+};
+
+const myDarkPalette: UnifiedThemeOptions["palette"] = {
+  ...backstagePalettes.dark,
+  primary: {
+    main: 'rgb(0, 102, 204)',
+  },
+  secondary: {
+    main: 'rgb(0, 64, 128)',
+  },
+  warning: {
+    main: '#8f5e15',
+  },
+  info: {
+    main: '#34548a',
+  },
+  success: {
+    main: '#485e30',
+  },
+  background: {
+    default: 'rgb(15, 18, 20)',
+    paper: 'rgb(27, 29, 33)',
+  },
+  banner: {
+    info: '#34548a',
+    error: '#8c4351',
+    text: '#343b58',
+    link: '#565a6e',
+  },
+  errorBackground: '#FAEAE8',
+  warningBackground: '#FDF7E7',
+  infoBackground: '#E7F1FA',
+  navigation: {
+    background: 'rgb(33, 36, 39)',
+    indicator: 'rgb(115, 188, 247)',
+    color: '#ffffff',
+    selectedColor: 'rgb(78, 82, 85)',
+  },
+};
+
+console.log('xxx myLightPalette', myLightPalette)
+console.log('xxx myLightTheme', createBaseThemeOptions({ palette: myLightPalette }))
+
+const myLightThemeOptions: UnifiedThemeOptions = {
+  // palette: myLightPalette,
+  ...createBaseThemeOptions({ palette: myLightPalette }),
+
+  // does nothing?
+  fontFamily: redHatFonts.text,
+  typography: {
+    fontFamily: redHatFonts.text,
+    h1: { fontFamily: redHatFonts.heading, fontSize: 54, fontWeight: 700, marginBottom: 10 },
+    h2: { fontFamily: redHatFonts.heading, fontSize: 40, fontWeight: 700, marginBottom: 8 },
+    h3: { fontFamily: redHatFonts.heading, fontSize: 32, fontWeight: 700, marginBottom: 6 },
+    h4: { fontFamily: redHatFonts.heading, fontSize: 28, fontWeight: 700, marginBottom: 6 },
+    h5: { fontFamily: redHatFonts.heading, fontSize: 24, fontWeight: 700, marginBottom: 4 },
+    h6: { fontFamily: redHatFonts.heading, fontSize: 20, fontWeight: 700, marginBottom: 2 },
+    htmlFontSize: 16,
+  },
+
   defaultPageTheme: 'all',
-  fontFamily: 'RedHatDisplay, helvetica, arial, sans-serif',
   /* below drives the header colors */
   pageTheme: {
     all: genPageTheme({
@@ -163,49 +380,28 @@ const myLightTheme = createUnifiedTheme({
       },
     }),
   },
-  components,
-});
 
-const myDarkTheme = createUnifiedTheme({
-  palette: {
-    ...themes.dark.getTheme('v5')?.palette,
-    primary: {
-      main: 'rgb(0, 102, 204)',
-    },
-    secondary: {
-      main: 'rgb(0, 64, 128)',
-    },
-    warning: {
-      main: '#8f5e15',
-    },
-    info: {
-      main: '#34548a',
-    },
-    success: {
-      main: '#485e30',
-    },
-    background: {
-      default: 'rgb(15, 18, 20)',
-      paper: 'rgb(27, 29, 33)',
-    },
-    banner: {
-      info: '#34548a',
-      error: '#8c4351',
-      text: '#343b58',
-      link: '#565a6e',
-    },
-    errorBackground: '#FAEAE8',
-    warningBackground: '#FDF7E7',
-    infoBackground: '#E7F1FA',
-    navigation: {
-      background: 'rgb(33, 36, 39)',
-      indicator: 'rgb(115, 188, 247)',
-      color: '#ffffff',
-      selectedColor: 'rgb(78, 82, 85)',
-    },
+  components,
+};
+
+const myDarkThemeOptions: UnifiedThemeOptions = {
+  // palette: myDarkPalette,
+  ...createBaseThemeOptions({ palette: myDarkPalette  }),
+
+  // does nothing?
+  fontFamily: redHatFonts.text,
+  typography: {
+    fontFamily: redHatFonts.text,
+    h1: { fontFamily: redHatFonts.heading, fontSize: 54, fontWeight: 700, marginBottom: 10 },
+    h2: { fontFamily: redHatFonts.heading, fontSize: 40, fontWeight: 700, marginBottom: 8 },
+    h3: { fontFamily: redHatFonts.heading, fontSize: 32, fontWeight: 700, marginBottom: 6 },
+    h4: { fontFamily: redHatFonts.heading, fontSize: 28, fontWeight: 700, marginBottom: 6 },
+    h5: { fontFamily: redHatFonts.heading, fontSize: 24, fontWeight: 700, marginBottom: 4 },
+    h6: { fontFamily: redHatFonts.heading, fontSize: 20, fontWeight: 700, marginBottom: 2 },
+    htmlFontSize: 16,
   },
+
   defaultPageTheme: 'all',
-  fontFamily: 'RedHatDisplay, helvetica, arial, sans-serif',
   /* below drives the header colors */
   pageTheme: {
     all: genPageTheme({
@@ -216,8 +412,59 @@ const myDarkTheme = createUnifiedTheme({
       }
     }),
   },
+
   components,
-});
+};
+
+const myLightTheme = createUnifiedTheme(myLightThemeOptions);
+const myDarkTheme = createUnifiedTheme(myDarkThemeOptions);
+
+const themes: AppTheme[] = [
+  {
+    id: 'light',
+    title: 'Backstage Light',
+    variant: 'light',
+    icon: <LightIcon />,
+    Provider: ({ children }) => (
+      <UnifiedThemeProvider theme={backstageThemes.light}>
+        {children}
+      </UnifiedThemeProvider>
+    ),
+  },
+  {
+    id: 'dark',
+    title: 'Backstage Dark',
+    variant: 'dark',
+    icon: <DarkIcon />,
+    Provider: ({ children }) => (
+      <UnifiedThemeProvider theme={backstageThemes.dark}>
+        {children}
+      </UnifiedThemeProvider>
+    ),
+  },
+  {
+    id: 'my-light',
+    title: 'My Light',
+    variant: 'light',
+    icon: <LightIcon />,
+    Provider: ({ children }) => (
+      <UnifiedThemeProvider theme={myLightTheme}>
+        {children}
+      </UnifiedThemeProvider>
+    ),
+  },
+  {
+    id: 'my-dark',
+    title: 'My Dark',
+    variant: 'dark',
+    icon: <DarkIcon />,
+    Provider: ({ children }) => (
+      <UnifiedThemeProvider theme={myDarkTheme}>
+        {children}
+      </UnifiedThemeProvider>
+    ),
+  },
+];
 
 const app = createApp({
   apis,
@@ -238,52 +485,7 @@ const app = createApp({
       catalogIndex: catalogPlugin.routes.catalogIndex,
     });
   },
-  themes: [
-    {
-      id: 'light',
-      title: 'Custom Light Theme',
-      variant: 'light',
-      icon: <LightIcon />,
-      Provider: ({ children }) => (
-        <UnifiedThemeProvider theme={myLightTheme}>
-          {children}
-        </UnifiedThemeProvider>
-      ),
-    },
-    {
-      id: 'dark',
-      title: 'Custom Dark Theme',
-      variant: 'dark',
-      icon: <DarkIcon />,
-      Provider: ({ children }) => (
-        <UnifiedThemeProvider theme={myDarkTheme}>
-          {children}
-        </UnifiedThemeProvider>
-      ),
-    },
-    {
-      id: 'backstage-light',
-      title: 'Backstage Light Theme',
-      variant: 'light',
-      icon: <LightIcon />,
-      Provider: ({ children }) => (
-        <UnifiedThemeProvider theme={themes.light}>
-          {children}
-        </UnifiedThemeProvider>
-      ),
-    },
-    {
-      id: 'backstage-dark',
-      title: 'Backstage Dark Theme',
-      variant: 'dark',
-      icon: <DarkIcon />,
-      Provider: ({ children }) => (
-        <UnifiedThemeProvider theme={themes.dark}>
-          {children}
-        </UnifiedThemeProvider>
-      ),
-    },
-  ]
+  themes,
 });
 
 const ButtonTest = () => {
