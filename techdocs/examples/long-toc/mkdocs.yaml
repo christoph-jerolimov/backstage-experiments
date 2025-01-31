@@ -1,0 +1,7 @@
+site_name: long-toc
+
+plugins:
+  - techdocs-core
+
+nav:
+  - Index: index.md

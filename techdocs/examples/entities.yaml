@@ -1,41 +1,54 @@
----
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-system
-apiVersion: backstage.io/v1alpha1
-kind: System
-metadata:
-  name: examples
-spec:
-  owner: guests
----
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: example-website
+  name: hello-world
+  annotations:
+    backstage.io/techdocs-ref: dir:hello-world
 spec:
   type: website
   lifecycle: experimental
   owner: guests
-  system: examples
-  providesApis: [example-grpc-api]
 ---
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-api
 apiVersion: backstage.io/v1alpha1
-kind: API
+kind: Component
 metadata:
-  name: example-grpc-api
+  name: long-content
+  annotations:
+    backstage.io/techdocs-ref: dir:long-content
 spec:
-  type: grpc
+  type: website
   lifecycle: experimental
   owner: guests
-  system: examples
-  definition: |
-    syntax = "proto3";
-
-    service Exampler {
-      rpc Example (ExampleMessage) returns (ExampleMessage) {};
-    }
-
-    message ExampleMessage {
-      string example = 1;
-    };
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: long-nav
+  annotations:
+    backstage.io/techdocs-ref: dir:long-nav
+spec:
+  type: website
+  lifecycle: experimental
+  owner: guests
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: long-nav-collapsed
+  annotations:
+    backstage.io/techdocs-ref: dir:long-nav-collapsed
+spec:
+  type: website
+  lifecycle: experimental
+  owner: guests
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: long-toc
+  annotations:
+    backstage.io/techdocs-ref: dir:long-toc
+spec:
+  type: website
+  lifecycle: experimental
+  owner: guests

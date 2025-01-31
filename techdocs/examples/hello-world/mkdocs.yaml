@@ -1,0 +1,8 @@
+site_name: hello-world
+
+plugins:
+  - techdocs-core
+
+nav:
+  - Index: index.md
+  - Tables: tables.md
