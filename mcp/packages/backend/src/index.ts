@@ -55,4 +55,5 @@ backend.add(import('@backstage/plugin-kubernetes-backend'));
 // mcp
 backend.add(import('@backstage/plugin-mcp-actions-backend'));
 
+backend.add(import('@internal/plugin-action-test-backend'));
 backend.start();

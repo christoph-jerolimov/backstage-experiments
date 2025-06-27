@@ -45,7 +45,7 @@ backend:
   actions:
     pluginSources:
       - 'catalog'
-      - 'my-custom-plugin'
+      - 'action-test'
 
 integrations:
   github:
