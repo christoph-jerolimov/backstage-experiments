@@ -32,6 +32,21 @@ backend:
     connection: ':memory:'
   # workingDirectory: /tmp # Use this to configure a working directory for the scaffolder, defaults to the OS temp-dir
 
+  auth:
+    externalAccess:
+      - type: static
+        options:
+          token: K13sm7jZxbxEYsFFOSXPfpEDRjW1ANVu
+          subject: mcp-clients
+        accessRestrictions:
+          - plugin: mcp-actions
+          - plugin: catalog
+
+  actions:
+    pluginSources:
+      - 'catalog'
+      - 'my-custom-plugin'
+
 integrations:
   github:
     - host: github.com
