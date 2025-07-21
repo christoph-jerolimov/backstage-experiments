@@ -14,6 +14,9 @@
     "lint": "backstage-cli package lint"
   },
   "dependencies": {
+    "@backstage-community/plugin-cicd-statistics": "^0.8.0",
+    "@backstage-community/plugin-cicd-statistics-module-github": "^0.5.0",
+    "@backstage-community/plugin-cicd-statistics-module-gitlab": "^0.8.0",
     "@backstage/app-defaults": "^1.6.4",
     "@backstage/catalog-model": "^1.7.5",
     "@backstage/cli": "^0.33.1",

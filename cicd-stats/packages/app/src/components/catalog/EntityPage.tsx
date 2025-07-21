@@ -58,6 +58,8 @@ import {
   isKubernetesAvailable,
 } from '@backstage/plugin-kubernetes';
 
+import { EntityCicdStatisticsContent } from '@backstage-community/plugin-cicd-statistics';
+
 const techdocsContent = (
   <EntityTechdocsContent>
     <TechDocsAddons>
@@ -153,6 +155,10 @@ const serviceEntityPage = (
       {cicdContent}
     </EntityLayout.Route>
 
+    <EntityLayout.Route path="/ci-cd-statistics" title="CI/CD Statistics">
+      <EntityCicdStatisticsContent />
+    </EntityLayout.Route>
+
     <EntityLayout.Route
       path="/kubernetes"
       title="Kubernetes"
@@ -197,6 +203,10 @@ const websiteEntityPage = (
 
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
       {cicdContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/ci-cd-statistics" title="CI/CD Statistics">
+      <EntityCicdStatisticsContent />
     </EntityLayout.Route>
 
     <EntityLayout.Route
