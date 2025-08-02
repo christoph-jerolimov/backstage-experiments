@@ -107,6 +107,17 @@ catalog:
 kubernetes:
   # see https://backstage.io/docs/features/kubernetes/configuration for kubernetes configuration options
 
+explore:
+  tools:
+    - title: New Relic
+      description: new relic plugin
+      url: https://newrelic.mycompany.com
+      image: https://i.imgur.com/L37ikrX.jpg
+      tags:
+        - newrelic
+        - proxy
+        - nerdGraph
+
 # see https://backstage.io/docs/permissions/getting-started for more on the permission framework
 permission:
   # setting this to `false` will disable permissions

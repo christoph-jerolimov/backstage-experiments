@@ -52,4 +52,7 @@ backend.add(import('@backstage/plugin-search-backend-module-techdocs'));
 // kubernetes
 backend.add(import('@backstage/plugin-kubernetes-backend'));
 
+// explore plugin
+backend.add(import('@backstage-community/plugin-explore-backend'));
+
 backend.start();
