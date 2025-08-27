@@ -58,6 +58,10 @@ import {
   isKubernetesAvailable,
 } from '@backstage/plugin-kubernetes';
 
+import {
+  EntityBugzillaIssuesCard,
+} from '@backstage-community/plugin-bugzilla';
+
 const techdocsContent = (
   <EntityTechdocsContent>
     <TechDocsAddons>
@@ -186,6 +190,10 @@ const serviceEntityPage = (
     <EntityLayout.Route path="/docs" title="Docs">
       {techdocsContent}
     </EntityLayout.Route>
+
+    <EntityLayout.Route path="/bugzilla" title="Bugzilla">
+      <EntityBugzillaIssuesCard />
+    </EntityLayout.Route>
   </EntityLayout>
 );
 
@@ -239,6 +247,10 @@ const defaultEntityPage = (
 
     <EntityLayout.Route path="/docs" title="Docs">
       {techdocsContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/bugzilla" title="Bugzilla">
+      <EntityBugzillaIssuesCard />
     </EntityLayout.Route>
   </EntityLayout>
 );
