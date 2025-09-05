@@ -38,6 +38,8 @@ import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/
 import { NotificationsPage } from '@backstage/plugin-notifications';
 import { SignalsDisplay } from '@backstage/plugin-signals';
 
+import { McpChatPage } from '@backstage-community/plugin-mcp-chat';
+
 const app = createApp({
   apis,
   bindRoutes({ bind }) {
@@ -97,6 +99,7 @@ const routes = (
     <Route path="/settings" element={<UserSettingsPage />} />
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
     <Route path="/notifications" element={<NotificationsPage />} />
+    <Route path="/mcp-chat" element={<McpChatPage />} />
   </FlatRoutes>
 );
 

@@ -63,4 +63,10 @@ backend.add(import('@backstage/plugin-kubernetes-backend'));
 backend.add(import('@backstage/plugin-notifications-backend'));
 backend.add(import('@backstage/plugin-signals-backend'));
 
+// mcp-chat
+// imported this way so that I can test locally without a real npm package with:
+// `yarn start --link ~/git/backstage/community-plugins/workspaces/mcp-chat`
+import mcpChatBackend from '@backstage-community/plugin-mcp-chat-backend';
+backend.add(mcpChatBackend);
+
 backend.start();
