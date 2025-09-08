@@ -14,6 +14,7 @@
     "lint": "backstage-cli package lint"
   },
   "dependencies": {
+    "@backstage-community/plugin-servicenow": "^1.1.1",
     "@backstage/core-compat-api": "^0.5.0",
     "@backstage/core-components": "^0.17.5",
     "@backstage/frontend-defaults": "^0.3.0",
