@@ -1,5 +1,5 @@
 app:
-  title: Scaffolded Backstage App
+  title: ServiceNow Backstage Test App
   baseUrl: http://localhost:3000
 
 organization:
@@ -58,7 +58,7 @@ proxy:
 techdocs:
   builder: 'local' # Alternatives - 'external'
   generator:
-    runIn: 'docker' # Alternatives - 'local'
+    runIn: 'local' # Alternatives - 'local'
   publisher:
     type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
 
@@ -80,29 +80,17 @@ catalog:
   locations:
     # Local example data, file locations are relative to the backend process, typically `packages/backend`
     - type: file
+      target: ../../../../../backstage/community-plugins/workspaces/servicenow/catalog-info.yaml
+    - type: file
       target: ../../examples/entities.yaml
-
-    # Local example template
     - type: file
       target: ../../examples/template/template.yaml
       rules:
         - allow: [Template]
-
-    # Local example organizational data
     - type: file
       target: ../../examples/org.yaml
       rules:
         - allow: [User, Group]
-
-    ## Uncomment these lines to add more example data
-    # - type: url
-    #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all.yaml
-
-    ## Uncomment these lines to add an example org
-    # - type: url
-    #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
-    #   rules:
-    #     - allow: [User, Group]
 
 kubernetes:
   # see https://backstage.io/docs/features/kubernetes/configuration for kubernetes configuration options
@@ -111,3 +99,9 @@ kubernetes:
 permission:
   # setting this to `false` will disable permissions
   enabled: true
+
+servicenow:
+  instanceUrl: https://<your-dev-instance>.service-now.com
+  basicAuth:
+    username: admin
+    password: <your-password>

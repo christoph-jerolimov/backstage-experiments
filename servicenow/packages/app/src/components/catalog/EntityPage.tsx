@@ -58,6 +58,8 @@ import {
   isKubernetesAvailable,
 } from '@backstage/plugin-kubernetes';
 
+import { EntityServicenowContent, isMyProfile, isServicenowAvailable } from '@backstage-community/plugin-servicenow';
+
 const techdocsContent = (
   <EntityTechdocsContent>
     <TechDocsAddons>
@@ -186,6 +188,10 @@ const serviceEntityPage = (
     <EntityLayout.Route path="/docs" title="Docs">
       {techdocsContent}
     </EntityLayout.Route>
+
+    <EntityLayout.Route path="/servicenow" title="ServiceNow" if={isServicenowAvailable}>
+      <EntityServicenowContent />
+    </EntityLayout.Route>
   </EntityLayout>
 );
 
@@ -221,6 +227,10 @@ const websiteEntityPage = (
     <EntityLayout.Route path="/docs" title="Docs">
       {techdocsContent}
     </EntityLayout.Route>
+
+    <EntityLayout.Route path="/servicenow" title="ServiceNow" if={isServicenowAvailable}>
+      <EntityServicenowContent />
+    </EntityLayout.Route>
   </EntityLayout>
 );
 
@@ -239,6 +249,10 @@ const defaultEntityPage = (
 
     <EntityLayout.Route path="/docs" title="Docs">
       {techdocsContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/servicenow" title="ServiceNow" if={isServicenowAvailable}>
+      <EntityServicenowContent />
     </EntityLayout.Route>
   </EntityLayout>
 );
@@ -304,6 +318,9 @@ const userPage = (
           <EntityOwnershipCard variant="gridItem" />
         </Grid>
       </Grid>
+    </EntityLayout.Route>
+    <EntityLayout.Route path="/servicenow" title="My ServiceNow Tickets" if={isMyProfile}>
+      <EntityServicenowContent />
     </EntityLayout.Route>
   </EntityLayout>
 );
