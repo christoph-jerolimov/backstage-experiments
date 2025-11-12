@@ -1,0 +1,76 @@
+import { createTranslationMessages, createTranslationResource } from '@backstage/core-plugin-api/alpha';
+
+import { coreComponentsTranslationRef } from '@backstage/core-components/alpha';
+
+const de = createTranslationMessages({
+  ref: coreComponentsTranslationRef,
+  full: true,
+  messages: {
+    'table.filter.title': 'Filter',
+    'table.filter.placeholder': 'Alle Ergebnisse',
+    'table.filter.clearAll': 'Alles löschen',
+    'table.body.emptyDataSourceMessage': 'Keine Datensätze zum Anzeigen',
+    'table.header.actions': 'Aktionen',
+    'table.toolbar.search': 'Filter',
+    'table.pagination.firstTooltip': 'Erste Seite',
+    'table.pagination.labelDisplayedRows': '{from}-{to} von {count}',
+    'table.pagination.labelRowsSelect': 'Zeilen',
+    'table.pagination.lastTooltip': 'Letzte Seite',
+    'table.pagination.nextTooltip': 'Nächste Seite',
+    'table.pagination.previousTooltip': 'Vorherige Seite',
+    'signIn.title': 'Anmelden',
+    'signIn.loginFailed': 'Anmeldung fehlgeschlagen',
+    'signIn.customProvider.title': 'Benutzerdefinierter Benutzer',
+    'signIn.customProvider.subtitle': 'Geben Sie Ihre eigene Benutzer-ID und Anmeldedaten ein.\n Diese Auswahl wird nicht gespeichert.',
+    'signIn.customProvider.userId': 'Benutzer-ID',
+    'signIn.customProvider.tokenInvalid': 'Token ist kein gültiger OpenID Connect JWT Token',
+    'signIn.customProvider.continue': 'Fortfahren',
+    'signIn.customProvider.idToken': 'ID-Token (optional)',
+    'signIn.guestProvider.title': 'Gast',
+    'signIn.guestProvider.enter': 'Eingeben',
+    'signIn.guestProvider.subtitle': 'Geben Sie sich als Gastbenutzer ein.\n Sie werden keine überprüfte Identität haben, was bedeutet, dass einige Funktionen möglicherweise nicht verfügbar sind.',
+    skipToContent: 'Zum Inhalt springen',
+    'copyTextButton.tooltipText': 'Text in Zwischenablage kopiert',
+    'simpleStepper.finish': 'Fertig',
+    'simpleStepper.reset': 'Zurücksetzen',
+    'simpleStepper.next': 'Weiter',
+    'simpleStepper.skip': 'Überspringen',
+    'simpleStepper.back': 'Zurück',
+    'errorPage.title': 'Es sieht aus, als hätte jemand das Mikrofon fallen gelassen!',
+    'errorPage.subtitle': 'FEHLER {{status}}: {{statusMessage}}',
+    'errorPage.goBack': 'Zurückgehen',
+    'errorPage.showMoreDetails': 'Mehr Details anzeigen',
+    'errorPage.showLessDetails': 'Weniger Details anzeigen',
+    'emptyState.missingAnnotation.title': 'Fehlende Annotation',
+    'emptyState.missingAnnotation.actionTitle': 'Fügen Sie die Annotation zu Ihrem Component-YAML hinzu, wie im hervorgehobenen Beispiel unten gezeigt:',
+    'emptyState.missingAnnotation.readMore': 'Mehr lesen',
+    'supportConfig.default.title': 'Support nicht konfiguriert',
+    'supportConfig.default.linkTitle': 'Konfigurationsschlüssel `app.support` hinzufügen',
+    'errorBoundary.title': 'Bitte kontaktieren Sie {{slackChannel}} für Hilfe.',
+    'oauthRequestDialog.message': 'Melden Sie sich an, um {{appTitle}} den Zugriff auf {{provider}} APIs und Identitäten zu ermöglichen.',
+    'oauthRequestDialog.title': 'Anmeldung erforderlich',
+    'oauthRequestDialog.authRedirectTitle': 'Dies löst eine HTTP-Umleitung zur OAuth-Anmeldung aus.',
+    'oauthRequestDialog.login': 'Anmelden',
+    'oauthRequestDialog.rejectAll': 'Alle ablehnen',
+    'supportButton.title': 'Unterstützung',
+    'supportButton.close': 'Schließen',
+    'alertDisplay.message_one': '({{ count }} neuere Nachricht)',
+    'alertDisplay.message_other': '({{ count }} neuere Nachrichten)',
+    'autoLogout.stillTherePrompt.title': 'Wird abgemeldet aufgrund von Inaktivität',
+    'autoLogout.stillTherePrompt.buttonText': 'Ja! Meld mich nicht ab',
+    'dependencyGraph.fullscreenTooltip': 'Vollbildmodus umschalten',
+    'proxiedSignInPage.title': 'Sie scheinen nicht angemeldet zu sein. Bitte versuchen Sie, die Browserseite neu zu laden.',
+
+    // New
+    ...{
+      // 'logViewer.controls.search': 'Suchen',
+    },
+  },
+});
+
+export const coreComponentsTranslationResource = createTranslationResource({
+  ref: coreComponentsTranslationRef,
+  translations: {
+    de: () => Promise.resolve({ default: de }),
+  },
+})

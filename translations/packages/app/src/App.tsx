@@ -37,8 +37,15 @@ import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 import { NotificationsPage } from '@backstage/plugin-notifications';
 import { SignalsDisplay } from '@backstage/plugin-signals';
+
 import { catalogTranslationResource } from './translations/catalog';
 import { catalogReactTranslationResource } from './translations/catalog-react';
+import { catalogGraphTranslationResource } from './translations/catalog-graph';
+import { catalogImportTranslationResource } from './translations/catalog-import';
+import { coreComponentsTranslationResource } from './translations/core-components';
+// import { techdocsTranslationResource } from './translations/techdocs';
+import { apiDocsTranslationResource } from './translations/apidocs';
+// import { notificationsTranslationResource } from './translations/notifications';
 
 const app = createApp({
   apis,
@@ -68,6 +75,12 @@ const app = createApp({
     resources: [
       catalogTranslationResource,
       catalogReactTranslationResource,
+      catalogGraphTranslationResource,
+      catalogImportTranslationResource,
+      coreComponentsTranslationResource,
+      // techdocsTranslationResource,
+      apiDocsTranslationResource,
+      // notificationsTranslationResource,
     ],
   },
 });
