@@ -15,10 +15,12 @@ export const scaffolderModule = createBackendModule({
   register({ registerInit }) {
     registerInit({
       deps: {
+        auth: coreServices.auth,
         discoveryApi: coreServices.discovery,
         scaffolderActions: scaffolderActionsExtensionPoint,
       },
       async init({
+        auth,
         discoveryApi,
         scaffolderActions,
       }) {
@@ -30,7 +32,7 @@ export const scaffolderModule = createBackendModule({
 
         scaffolderActions.addActions(
           createDebugAction(),
-          createStartTemplatesAction({ catalogApi, scaffolderApi }),
+          createStartTemplatesAction({ auth, catalogApi, scaffolderApi }),
         );
       }
     });

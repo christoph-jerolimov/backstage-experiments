@@ -71,6 +71,21 @@ auth:
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
 
+  scheduled:
+    - templateRef: notification-test
+      schedule:
+        frequency:
+          minutes: 1
+      values:
+        title: Scheduled scaffolder action that triggered a notification
+        description: A notification description :)
+        severity: high
+
+    - templateRef: scheduled-openai-test
+      schedule:
+        frequency:
+          minutes: 1
+
 catalog:
   import:
     entityFilename: catalog-info.yaml

@@ -5778,6 +5778,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@internal/backstage-plugin-scaffolder-backend-module-scheduler@workspace:^, @internal/backstage-plugin-scaffolder-backend-module-scheduler@workspace:plugins/scaffolder-backend-module-scheduler":
+  version: 0.0.0-use.local
+  resolution: "@internal/backstage-plugin-scaffolder-backend-module-scheduler@workspace:plugins/scaffolder-backend-module-scheduler"
+  dependencies:
+    "@backstage/backend-plugin-api": "npm:^1.5.0"
+    "@backstage/backend-test-utils": "npm:^1.10.0"
+    "@backstage/cli": "npm:^0.34.5"
+  languageName: unknown
+  linkType: soft
+
 "@internationalized/date@npm:^3.10.0":
   version: 3.10.0
   resolution: "@internationalized/date@npm:3.10.0"
@@ -15139,6 +15149,7 @@ __metadata:
     "@backstage/plugin-techdocs-backend": "npm:^2.1.2"
     "@internal/backstage-plugin-scaffolder-backend-module-matrix": "workspace:^"
     "@internal/backstage-plugin-scaffolder-backend-module-openai": "workspace:^"
+    "@internal/backstage-plugin-scaffolder-backend-module-scheduler": "workspace:^"
     app: "link:../app"
     better-sqlite3: "npm:^12.0.0"
     node-gyp: "npm:^10.0.0"

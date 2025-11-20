@@ -67,5 +67,6 @@ backend.add(import('@backstage/plugin-signals-backend'));
 // scaffolder modules
 backend.add(import('@internal/backstage-plugin-scaffolder-backend-module-openai'));
 backend.add(import('@internal/backstage-plugin-scaffolder-backend-module-matrix'));
+backend.add(import('@internal/backstage-plugin-scaffolder-backend-module-scheduler'));
 
 backend.start();

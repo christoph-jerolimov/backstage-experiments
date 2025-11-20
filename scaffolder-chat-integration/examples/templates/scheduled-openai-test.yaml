@@ -1,0 +1,44 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: scheduled-openai-test
+  title: Scheduled OpenAI Test
+spec:
+  owner: user:guest
+  type: service
+
+  steps:
+    - id: start-templates
+      name: Start templates
+      action: matrix:start-templates
+      input:
+        template: scheduled-openai-test-per-team-member
+        matrix:
+          username:
+            - christoph
+            - jai
+            - debsmita
+---
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: scheduled-openai-test-per-team-member
+  title: Scheduled OpenAI Test per Team member
+spec:
+  owner: user:guest
+  type: service
+
+  steps:
+    - id: chat
+      name: Chat
+      action: openai:chat
+      input:
+        prompt: Hi, my name is ${{ parameters.username }}. Who are you?
+  output:
+    text:
+      - title: Chat response
+        content: ${{ steps.chat.output.text }}
+      - title: User prompt
+        content: ${{ parameters.prompt }}
+      - title: Model used
+        content: ${{ steps.chat.output.model }}

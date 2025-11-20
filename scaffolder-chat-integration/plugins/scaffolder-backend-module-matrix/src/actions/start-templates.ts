@@ -1,4 +1,6 @@
+import { AuthService } from '@backstage/backend-plugin-api';
 import { CatalogApi } from '@backstage/catalog-client';
+import { parseEntityRef, stringifyEntityRef } from '@backstage/catalog-model';
 import { ScaffolderApi, TemplateEntityV1beta3 } from '@backstage/plugin-scaffolder-common';
 import { createTemplateAction } from '@backstage/plugin-scaffolder-node';
 
@@ -9,7 +11,7 @@ import { getCombinations } from '../utils/getCombinations';
  *
  * @public
  */
-export function createStartTemplatesAction({ catalogApi, scaffolderApi }: { catalogApi: CatalogApi; scaffolderApi: ScaffolderApi }) {
+export function createStartTemplatesAction({ auth, catalogApi, scaffolderApi }: { auth: AuthService, catalogApi: CatalogApi; scaffolderApi: ScaffolderApi }) {
   // For more information on how to define custom actions, see
   //   https://backstage.io/docs/features/software-templates/writing-custom-actions
   return createTemplateAction({
@@ -37,14 +39,17 @@ export function createStartTemplatesAction({ catalogApi, scaffolderApi }: { cata
     },
     async handler(ctx) {
       const combinations = getCombinations(ctx.input.matrix);
-      ctx.logger.info(
-        `Running example template with parameters: ${ctx.input.template}`,
-      );
 
       let i = 0;
       const total = combinations.length;
       for (const combination of combinations) {
         i++;
+
+        const parentTemplateRef = parseEntityRef(ctx.templateInfo!.entityRef);
+        const templateRef = stringifyEntityRef(parseEntityRef(ctx.input.template, {
+          defaultKind: 'Template',
+          defaultNamespace: parentTemplateRef.namespace,
+        }));
 
         const values = {
           ...combination,
@@ -52,15 +57,25 @@ export function createStartTemplatesAction({ catalogApi, scaffolderApi }: { cata
         };
         const secrets = ctx.secrets;
 
+        // Use parent template token
+        let token = ctx.secrets?.backstageToken;
+        // But when there is none, fallback to a system token
+        if (!token) {
+          token = (await auth.getPluginRequestToken({
+            onBehalfOf: await auth.getOwnServiceCredentials(),
+            targetPluginId: 'scaffolder',
+          })).token;
+        }
+
         if (ctx.isDryRun) {
           ctx.logger.info(`[DRY-RUN] Would start software template ${i} / ${total} with parameters ${JSON.stringify(values)}...`);
 
           // TODO fetch template and run it with scaffolderApi.dryRun
           const template = await catalogApi.getEntityByRef(
-            ctx.input.template,
+            templateRef,
             {
-              token: ctx.secrets?.backstageToken,
-            }
+              token,
+            },
           ) as TemplateEntityV1beta3 | undefined;
 
           // FIXME: untested!!!
@@ -71,7 +86,7 @@ export function createStartTemplatesAction({ catalogApi, scaffolderApi }: { cata
               secrets,
               directoryContents: [],
             }, {
-              token: ctx.secrets?.backstageToken,
+              token,
             });
           }
 
@@ -79,11 +94,11 @@ export function createStartTemplatesAction({ catalogApi, scaffolderApi }: { cata
           ctx.logger.info(`Start software template ${i} / ${total} with parameters ${JSON.stringify(values)}`);
 
           await scaffolderApi.scaffold({
-            templateRef: ctx.input.template,
+            templateRef,
             values,
             secrets,
           }, {
-            token: ctx.secrets?.backstageToken,
+            token,
           });
         }
       }

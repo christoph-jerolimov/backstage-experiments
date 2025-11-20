@@ -8,3 +8,4 @@ spec:
     - ./templates/matrix-start-template-test.yaml
     - ./templates/notification-test.yaml
     - ./templates/openai-test.yaml
+    - ./templates/scheduled-openai-test.yaml
