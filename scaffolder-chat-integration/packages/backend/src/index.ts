@@ -61,6 +61,7 @@ backend.add(import('@backstage/plugin-kubernetes-backend'));
 
 // notifications and signals plugins
 backend.add(import('@backstage/plugin-notifications-backend'));
+backend.add(import('@backstage/plugin-notifications-backend-module-slack'));
 backend.add(import('@backstage/plugin-signals-backend'));
 
 backend.start();
