@@ -1,0 +1,39 @@
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-template
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: openai-test
+  title: OpenAI Test
+  description: An example template for the scaffolder that interacts with OpenAI
+spec:
+  owner: user:guest
+  type: service
+
+  # These parameters are used to generate the input form in the frontend, and are
+  # used to gather input data for the execution of the template.
+  parameters:
+    - title: Fill in some steps
+      required:
+        - prompt
+      properties:
+        prompt:
+          title: Prompt
+          type: string
+          description: The prompt to send to OpenAI
+          ui:autofocus: true
+
+  # These steps are executed in the scaffolder backend, using data that we gathered
+  # via the parameters above.
+  steps:
+    # Let's notify the user that the template has completed using the Notification action
+    - id: chat
+      name: Chat
+      action: openai:chat
+      input:
+        prompt: ${{ parameters.prompt }}
+  output:
+    text:
+      - title: Chat response
+        content: ${{ steps.chat.output.text }}
+      - title: Model used
+        content: ${{ steps.chat.output.model }}

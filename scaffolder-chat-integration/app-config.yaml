@@ -88,7 +88,7 @@ catalog:
         - allow: [User, Group]
 
     - type: file
-      target: ../../examples/send-notification.yaml
+      target: ../../examples/all-templates.yaml
       rules:
         - allow: [Template]
 

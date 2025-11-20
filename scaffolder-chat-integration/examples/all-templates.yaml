@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: all-templates
+spec:
+  targets:
+    - ./templates/notification-test.yaml
+    - ./templates/openai-test.yaml

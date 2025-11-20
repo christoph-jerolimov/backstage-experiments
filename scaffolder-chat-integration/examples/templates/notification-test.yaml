@@ -1,9 +1,9 @@
-apiVersion: scaffolder.backstage.io/v1beta3
 # https://backstage.io/docs/features/software-catalog/descriptor-format#kind-template
+apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: send-notification
-  title: Send Notification Template
+  name: notification-test
+  title: Notification Test
   description: An example template for the scaffolder that sends a notification
 spec:
   owner: user:guest

@@ -64,4 +64,7 @@ backend.add(import('@backstage/plugin-notifications-backend'));
 backend.add(import('@backstage/plugin-notifications-backend-module-slack'));
 backend.add(import('@backstage/plugin-signals-backend'));
 
+// scaffolder modules
+backend.add(import('@internal/backstage-plugin-scaffolder-backend-module-openai'));
+
 backend.start();
