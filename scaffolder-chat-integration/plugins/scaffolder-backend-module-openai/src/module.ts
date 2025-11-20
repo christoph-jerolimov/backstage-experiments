@@ -14,7 +14,7 @@ export const scaffolderModule = createBackendModule({
       deps: {
         scaffolderActions: scaffolderActionsExtensionPoint
       },
-      async init({ scaffolderActions}) {
+      async init({ scaffolderActions }) {
         scaffolderActions.addActions(
           createChatAction(),
         );

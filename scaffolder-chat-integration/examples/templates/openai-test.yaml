@@ -35,5 +35,7 @@ spec:
     text:
       - title: Chat response
         content: ${{ steps.chat.output.text }}
+      - title: User prompt
+        content: ${{ parameters.prompt }}
       - title: Model used
         content: ${{ steps.chat.output.model }}

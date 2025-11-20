@@ -1,0 +1,36 @@
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-template
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: matrix-start-template-test
+  title: Matrix Start Template Test
+  description: An example template for the scaffolder that starts n other scaffolder templates in parallel.
+spec:
+  owner: user:guest
+  type: service
+
+  # These parameters are used to generate the input form in the frontend, and are
+  # used to gather input data for the execution of the template.
+  # parameters:
+  #   - title: Fill in some steps
+  #     required:
+  #       - prompt
+  #     properties:
+  #       prompt:
+  #         title: Prompt
+  #         type: string
+  #         description: The prompt to send to OpenAI
+  #         ui:autofocus: true
+
+  # These steps are executed in the scaffolder backend, using data that we gathered
+  # via the parameters above.
+  steps:
+    - id: start-templates
+      name: Start templates
+      action: matrix:start-templates
+      input:
+        template: notification-test
+        matrix:
+          title: ['Title 1', 'Title 2']
+        otherValues:
+          description: A notification description :)

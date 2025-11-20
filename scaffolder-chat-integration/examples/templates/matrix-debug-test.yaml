@@ -1,0 +1,65 @@
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-template
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: matrix-debug-test
+  title: Matrix Debug Test
+  description: An example template for the scaffolder that starts n other scaffolder templates in parallel.
+spec:
+  owner: user:guest
+  type: service
+
+  # These parameters are used to generate the input form in the frontend, and are
+  # used to gather input data for the execution of the template.
+  # parameters:
+  #   - title: Fill in some steps
+  #     required:
+  #       - prompt
+  #     properties:
+  #       prompt:
+  #         title: Prompt
+  #         type: string
+  #         description: The prompt to send to OpenAI
+  #         ui:autofocus: true
+
+  # These steps are executed in the scaffolder backend, using data that we gathered
+  # via the parameters above.
+  steps:
+    # - id: debug-undefined
+    #   name: Debug without matrix parameter
+    #   action: matrix:debug
+    - id: debug-empty
+      name: Debug with empty matrix parameter
+      action: matrix:debug
+      input:
+        matrix: {}
+    - id: debug1
+      name: Debug with one matrix parameter
+      action: matrix:debug
+      input:
+        matrix:
+          param1: ['value1', 'value2']
+    - id: debug2
+      name: Debug with two matrix parameters
+      action: matrix:debug
+      input:
+        matrix:
+          param1: ['value1', 'value2']
+          param2: [1, 2, 3]
+    - id: debug3
+      name: Debug with three matrix parameters
+      action: matrix:debug
+      input:
+        matrix:
+          param1: ['value1', 'value2']
+          param2: [1, 2, 3]
+          param3: ['a', 'b']
+    - id: debug4
+      name: Debug with four matrix parameters
+      action: matrix:debug
+      input:
+        matrix:
+          param1: ['value1', 'value2']
+          param2: [1, 2, 3]
+          param3: ['a', 'b']
+          param4: [true, false]

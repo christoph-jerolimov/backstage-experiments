@@ -4,5 +4,7 @@ metadata:
   name: all-templates
 spec:
   targets:
+    - ./templates/matrix-debug-test.yaml
+    - ./templates/matrix-start-template-test.yaml
     - ./templates/notification-test.yaml
     - ./templates/openai-test.yaml

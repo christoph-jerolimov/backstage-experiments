@@ -14,13 +14,16 @@ spec:
   parameters:
     - title: Fill in some steps
       required:
-        - name
+        - title
+        - description
       properties:
-        name:
-          title: Name
+        title:
+          title: Title
           type: string
-          description: Unique name of the component
           ui:autofocus: true
+        description:
+          title: Description
+          type: string
 
   # These steps are executed in the scaffolder backend, using data that we gathered
   # via the parameters above.
@@ -33,6 +36,6 @@ spec:
         recipients: entity
         entityRefs:
           - user:development/guest
-        title: 'Template executed'
-        info: 'Your template has been executed'
+        title: ${{ parameters.title }}
+        info: ${{ parameters.description }}
         severity: 'normal'
