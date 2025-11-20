@@ -24,6 +24,15 @@ spec:
         description:
           title: Description
           type: string
+        severity:
+          title: Severity
+          type: string
+          default: normal
+          enum:
+            - low
+            - normal
+            - high
+            - critical
 
   # These steps are executed in the scaffolder backend, using data that we gathered
   # via the parameters above.
@@ -38,4 +47,4 @@ spec:
           - user:development/guest
         title: ${{ parameters.title }}
         info: ${{ parameters.description }}
-        severity: 'normal'
+        severity: ${{ parameters.severity }}

@@ -32,5 +32,6 @@ spec:
         template: notification-test
         matrix:
           title: ['Title 1', 'Title 2']
+          severity: ['low', 'high']
         otherValues:
           description: A notification description :)
