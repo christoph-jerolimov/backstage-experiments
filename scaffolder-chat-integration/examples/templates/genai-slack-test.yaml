@@ -1,0 +1,47 @@
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-template
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: genai-slack-test
+  title: GenAi with Slack Test
+  description: An example template for the scaffolder that sends message to GenAI and the result to slack message
+spec:
+  owner: user:guest
+  type: service
+
+  # These parameters are used to generate the input form in the frontend, and are
+  # used to gather input data for the execution of the template.
+  parameters:
+    - title: Fill in some steps
+      required:
+        - prompt
+      properties:
+        prompt:
+          title: Prompt
+          type: string
+          description: The prompt to send to GenAI
+          ui:autofocus: true
+
+  # These steps are executed in the scaffolder backend, using data that we gathered
+  # via the parameters above.
+  steps:
+
+    - id: chat
+      name: Chat
+      action: genai:chat
+      input:
+        prompt: ${{ parameters.prompt }}
+
+    - id: message
+      name: Message
+      action: slack:sendMessage:conversation
+      input:
+        message: ${{ steps.chat.output.text }}
+        conversationId: C09U9GA7MJ7
+
+  output:
+    text:
+      - title: Chat response
+        content: ${{ steps.chat.output.text }}
+      - title: User prompt
+        content: ${{ parameters.prompt }}

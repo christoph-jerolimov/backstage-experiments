@@ -66,7 +66,11 @@ backend.add(import('@backstage/plugin-signals-backend'));
 
 // scaffolder modules
 backend.add(import('@internal/backstage-plugin-scaffolder-backend-module-openai'));
+backend.add(import('@internal/backstage-plugin-scaffolder-backend-module-genai'));
+backend.add(import('@internal/backstage-plugin-scaffolder-backend-module-ollama'));
+backend.add(import('@internal/backstage-plugin-scaffolder-backend-module-llama-stack'));
 backend.add(import('@internal/backstage-plugin-scaffolder-backend-module-matrix'));
 backend.add(import('@internal/backstage-plugin-scaffolder-backend-module-scheduler'));
+backend.add(import('@internal/backstage-plugin-scaffolder-backend-module-slack'));
 
 backend.start();

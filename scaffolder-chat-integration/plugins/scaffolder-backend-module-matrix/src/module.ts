@@ -10,7 +10,7 @@ import { createStartTemplatesAction } from "./actions/start-templates";
  * A backend module that registers the action into the scaffolder
  */
 export const scaffolderModule = createBackendModule({
-  moduleId: 'example-action',
+  moduleId: 'matrix-actions',
   pluginId: 'scaffolder',
   register({ registerInit }) {
     registerInit({
