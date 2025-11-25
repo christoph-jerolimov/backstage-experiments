@@ -6,7 +6,7 @@ consulted: todo
 informed: todo
 ---
 
-# <!-- short title, representative of solved problem and found solution -->
+# Short title, representative of solved problem and found solution
 
 ## Context and Problem Statement
 
@@ -14,11 +14,11 @@ informed: todo
 
 ## Decision Drivers
 
-* <!-- decision driver -->
+* Decision driver
 
 ## Considered Options
 
-* <!-- option -->
+* Option
 
 ## Decision Outcome
 
@@ -35,7 +35,7 @@ Chosen option: "", because
 
 ## Pros and Cons of the Options
 
-### <!-- title of option -->
+### Title of option
 
 * Good, because
 * Neutral, because

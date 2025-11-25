@@ -1,17 +1,44 @@
-# ADR-0000: Record architecture decisions
+---
+status: accepted
+date: 2025-11-25
+decision-makers: you, me, another-one
+consulted: todo
+informed: todo
+---
 
-## Status
+# Short title, representative of solved problem and found solution
 
-Accepted
+## Context and Problem Statement
 
-## Context
 
-We need to record the architectural decisions made on this project.
 
-## Decision
+## Decision Drivers
 
-We will use Architecture Decision Records, as described by Michael Nygard in this article: http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions
+* Decision driver
 
-## Consequences
+## Considered Options
 
-See Michael Nygard’s article, linked above.
+* Option
+
+## Decision Outcome
+
+Chosen option: "", because
+
+### Consequences
+
+* Good, because
+* Bad, because
+
+### Confirmation
+
+
+
+## Pros and Cons of the Options
+
+### Title of option
+
+* Good, because
+* Neutral, because
+* Bad, because
+
+## More Information
