@@ -1,16 +1,12 @@
 ---
-status: deprecated
+status: accepted
 date: 2025-11-25
 decision-makers: you, me, another-one
 consulted: todo
 informed: todo
 ---
 
-# Short title, representative of solved problem and found solution
-
-## Context and Problem Statement
-
-
+# Database usage
 
 ## Decision Drivers
 

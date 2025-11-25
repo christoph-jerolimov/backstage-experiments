@@ -6,7 +6,7 @@ consulted: todo
 informed: todo
 ---
 
-# Short title, representative of solved problem and found solution
+# Adhoc metrics
 
 ## Context and Problem Statement
 

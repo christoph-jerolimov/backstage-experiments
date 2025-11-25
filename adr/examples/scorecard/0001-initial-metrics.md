@@ -1,12 +1,12 @@
 ---
-status: accepted
+status: deprecated
 date: 2025-11-25
 decision-makers: you, me, another-one
 consulted: todo
 informed: todo
 ---
 
-# Short title, representative of solved problem and found solution
+# Initial metrics
 
 ## Context and Problem Statement
 
