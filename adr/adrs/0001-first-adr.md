@@ -10,8 +10,6 @@ informed: todo
 
 ## Context and Problem Statement
 
-
-
 ## Decision Drivers
 
 * Decision driver

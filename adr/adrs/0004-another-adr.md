@@ -8,6 +8,8 @@ informed: todo
 
 # Accepted ADR
 
+## Context and Problem Statement
+
 ## Decision Drivers
 
 * Decision driver
