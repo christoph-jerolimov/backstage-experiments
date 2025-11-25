@@ -1,12 +1,12 @@
 ---
-status: deprecated
+status: rejected
 date: 2025-11-25
 decision-makers: you, me, another-one
 consulted: todo
 informed: todo
 ---
 
-# Initial metrics
+# Rejected ADR
 
 ## Context and Problem Statement
 

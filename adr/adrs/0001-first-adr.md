@@ -6,7 +6,7 @@ consulted: todo
 informed: todo
 ---
 
-# Adhoc metrics
+# First ADR
 
 ## Context and Problem Statement
 

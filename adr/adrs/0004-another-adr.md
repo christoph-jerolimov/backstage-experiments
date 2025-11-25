@@ -6,7 +6,7 @@ consulted: todo
 informed: todo
 ---
 
-# Database usage
+# Accepted ADR
 
 ## Decision Drivers
 
