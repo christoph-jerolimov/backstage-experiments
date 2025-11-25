@@ -1,5 +1,5 @@
 ---
-status: accepted
+status: deprecated
 date: 2025-11-25
 decision-makers: you, me, another-one
 consulted: todo
