@@ -6,6 +6,11 @@ app:
   packages: all
 
   extensions:
+    - api:app/app-language:
+        config:
+          availableLanguages: ['en', 'de', 'fr']
+          defaultLanguage: 'en'
+
     # Disable the nav items that we're manually rendering in packages/app/src/modules/nav/Sidebar.tsx
     - nav-item:search: false
     - nav-item:user-settings: false
@@ -16,7 +21,6 @@ app:
     - page:catalog:
         config:
           path: /
-
 
 organization:
   name: My Company
@@ -110,15 +114,11 @@ catalog:
       rules:
         - allow: [User, Group]
 
-    ## Uncomment these lines to add more example data
-    # - type: url
-    #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all.yaml
-
-    ## Uncomment these lines to add an example org
-    # - type: url
-    #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
-    #   rules:
-    #     - allow: [User, Group]
+    # npm plugin test entities
+    - type: url
+      target: https://github.com/backstage/community-plugins/blob/main/workspaces/npm/examples/npmjs-examples.yaml
+      rules:
+        - allow: [Component]
 
 kubernetes:
   # see https://backstage.io/docs/features/kubernetes/configuration for kubernetes configuration options
@@ -127,3 +127,6 @@ kubernetes:
 permission:
   # setting this to `false` will disable permissions
   enabled: true
+
+npm:
+  defaultRegistry: npmjs
