@@ -12,15 +12,31 @@ app:
           defaultLanguage: 'en'
 
     # Disable the nav items that we're manually rendering in packages/app/src/modules/nav/Sidebar.tsx
-    - nav-item:search: false
-    - nav-item:user-settings: false
-    - nav-item:catalog: false
-    - nav-item:scaffolder: false
+    # - nav-item:search: false
+    - nav-item:user-settings:
+        config:
+          title: SETTINGS
+          asd: asd
+          priority: 1000
+          order:
+            after: id
+            before:
+              - id2
+              - id3
+    # - nav-item:catalog: false
+    # - nav-item:scaffolder: false
+
+    # - catalog-filter:catalog/kind: false
+
+    - entity-card:npm/EntityNpmInfoCard:
+        config:
+          title: Another title
+          priority: 1000
 
     # Configure the catalog index page to be the root page, this is normally mounted on /catalog
     - page:catalog:
         config:
-          path: /
+          # path: /
 
 organization:
   name: My Company
