@@ -1,0 +1,51 @@
+import { screen } from '@testing-library/react';
+import { http, HttpResponse } from 'msw';
+import { setupServer } from 'msw/node';
+import {
+  registerMswTestHooks,
+  renderInTestApp,
+} from '@backstage/frontend-test-utils';
+import { TodoPage182 } from './TodoPage';
+
+describe('TodoPage182', () => {
+  const server = setupServer();
+  registerMswTestHooks(server);
+
+  it('renders todos from the backend', async () => {
+    server.use(
+      http.get('*/api/n-pages/todos', () =>
+        HttpResponse.json({
+          items: [
+            {
+              id: '1',
+              title: 'Mocked task',
+              createdBy: 'user:default/guest',
+              createdAt: '2025-01-01T00:00:00.000Z',
+            },
+          ],
+        }),
+      ),
+    );
+
+    await renderInTestApp(<TodoPage182 />);
+
+    expect(await screen.findByText('Mocked task')).toBeInTheDocument();
+  });
+
+  it('falls back to example data when the backend fails', async () => {
+    server.use(
+      http.get('*/api/n-pages/todos', () =>
+        HttpResponse.json(
+          { message: 'Internal Server Error' },
+          { status: 500 },
+        ),
+      ),
+    );
+
+    await renderInTestApp(<TodoPage182 />);
+
+    expect(
+      await screen.findByText('Install the backend plugin'),
+    ).toBeInTheDocument();
+  });
+});
