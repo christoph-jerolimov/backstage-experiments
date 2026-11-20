@@ -2526,6 +2526,6 @@ const extensions = [
 export const nPagesPlugin = createFrontendPlugin({
   pluginId: 'n-pages',
   info: { packageJson: () => import('../package.json') },
-  extensions: extensions.slice(0, 11),
+  extensions, // : extensions.slice(0, 11),
   routes,
 });
